@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 from flask import Flask, render_template, jsonify, request
 app = Flask(__name__)
 
@@ -69,3 +70,11 @@ def savingArtShow():
 
 if __name__ == '__main__':
    app.run('0.0.0.0',port=5000,debug=True)
+=======
+
+
+
+
+
+
+>>>>>>> df0d407f7132f9a39487d3cd585d487ca4fa4663
