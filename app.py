@@ -34,19 +34,19 @@ def performance():
     
 headers = {
    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36'}
-data = requests.get(https://www.culture.go.kr/perform/performList.do?cPage=1&genre=6&searchKeywordType=t, headers=headers)
+data = requests.get("https://www.culture.go.kr/perform/performList.do?cPage=1&genre=6&searchKeywordType=t", headers=headers)
 
 soup = BeautifulSoup(data.text, 'html.parser')
 
 shows = soup.select('#contents > div.list_type1 > ul > li')
 
 for show in shows:
-title = show.select_one('dl > dt > a > span').text
-url = show.select_one('a.hoverDot')['href']
-image = show.select_one('a.hoverDot > div > img')['src']
-loc = show.select_one('dl > dd:nth-child(3) > span.loc').text
-loc_detail = show.select_one('dl > dd:nth-child(3) > span.loc_detail').text
-date = show.select_one('dl > dd.date').text
+   title = show.select_one('dl > dt > a > span').text
+   url = show.select_one('a.hoverDot')['href']
+   image = show.select_one('a.hoverDot > div > img')['src']
+   loc = show.select_one('dl > dd:nth-child(3) > span.loc').text
+   loc_detail = show.select_one('dl > dd:nth-child(3) > span.loc_detail').text
+   date = show.select_one('dl > dd.date').text
 
     
 

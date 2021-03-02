@@ -1,4 +1,3 @@
-```jsx
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -53,6 +52,18 @@
                 }
             })
         }
+
+        function openclose() {
+            let status = $('#intro-box').css('display');
+            if (status == 'block') {
+                $('#intro-box').hide()
+                $('#btn-introducing-box').text('사이트 소개 열기');
+            } else {
+                $('#intro-box').show()
+                $('#btn-introducing-box').text('사이트 소개 닫기');
+            }
+        }
+            
     </script>
 
     <style type="text/css">
@@ -60,7 +71,33 @@
             font-family: 'Song Myung', serif;;
         }
 
-        h1,
+        .wrap {
+            width: 90%;
+            justify-self: center;
+            margin: auto;
+        }
+
+        .title_line {
+            /* align-self: center; */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 90%;
+            height: 150px;
+        }
+
+        .wrap_pics {
+            width: 90%;
+            height: 900px;
+            margin: auto;
+        }
+
+        .culture-box {
+            width: 10%;
+            height: 100px;
+        }
+
+        /* h1,
         h5 {
             display: inline;
         }
@@ -76,60 +113,104 @@
 
         .reviews {
             margin-top: 100px;
+        } */
+
+        .introducing_box {
+            width: 80%;
+            margin: 20px auto 30px auto;
+            border: 3px solid black;
+            border-radius: 10px;
+            height: 700px;
+            padding: 40px;
+            display: none;
         }
+
+        .two_images {
+            width: 90%;
+            height: 900px;
+            /* background-image: url("https://image.ajunews.com/content/image/2016/11/28/20161128223905832496.jpg"); */
+            /* background-position: center; */
+            /* background-size: cover; */
+            float: left;
+            padding: 10px;
+            width: 50%;
+        }
+
+        /* .floating_text {
+            width: 100%;
+            height: 200px;
+            text-align: center;
+            position: absolute;
+            transform: translate( -50%, -50% );
+        }  */
+
+        .navbar_menu {
+            display: flex;
+            list-style: none;
+            padding-left: 0;
+        }   
+
     </style>
 </head>
-
+`
 <body>
-    <div class="container">
-        <img src="https://previews.123rf.com/images/maxxyustas/maxxyustas1511/maxxyustas151100002/47858355-education-concept-books-and-textbooks-on-the-bookshelf-3d.jpg"
-            class="img-fluid" alt="Responsive image">
-        <div class="info">
-            <h1>읽은 책에 대해 말씀해주세요.</h1>
-            <p>다른 사람을 위해 리뷰를 남겨주세요! 다 같이 좋은 책을 읽는다면 다 함께 행복해질 수 있지 않을까요?</p>
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text">제목</span>
-                </div>
-                <input type="text" class="form-control" id="title">
+    <div class="wrap">
+        <div class = "title_line">
+            <div class="culture-box">
+                <img class="card-img-top"
+                    src="C:\Users\heoyj\Desktop\hh99_mkheo\hanghae99-first-project\static\share_culture.jpg" alt="Card image cap">
             </div>
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text">저자</span>
-                </div>
-                <input type="text" class="form-control" id="author">
-            </div>
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text">리뷰</span>
-                </div>
-                <textarea class="form-control" id="bookReview" cols="30" rows="5"
-                    placeholder="140자까지 입력할 수 있습니다."></textarea>
-            </div>
-            <div class="review">
-                <button onclick="makeReview()" type="button" class="btn btn-primary">리뷰 작성하기</button>
-            </div>
+
+            <ul class="navbar_menu">
+                <li><a href="#" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">로그인</a></li>
+                <!-- <li><a href="/honeyTip">그외 꿀 정보</a></li> -->
+            </ul>
+            <!-- 한줄 나란히? -->
+            <!-- 로그인 정보 -->
+            <p class="lead">
+                <a onclick="openclose()" id="btn-introducing-box" class="btn btn-primary btn-lg" href="#" role="button">사이트 소개 닫기</a>
+            </p>
+
+            <!-- <div class="navbar_writeBtn" id="D-day" style="color: var(--text-color)">
+                <button onclick="openClose()">사이트 소개</button>
+            </div> -->
         </div>
-        <div class="reviews">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th scope="col">제목</th>
-                        <th scope="col">저자</th>
-                        <th scope="col">리뷰</th>
-                    </tr>
-                </thead>
-                <tbody id="reviews-box">
-                    <tr>
-                        <td>왕초보 8주 코딩</td>
-                        <td>김르탄</td>
-                        <td>역시 왕초보 코딩교육의 명가답군요. 따라하다보니 눈 깜짝할 사이에 8주가 지났습니다.</td>
-                    </tr>
-                </tbody>
-            </table>
+
+        <div class="introducing-box" id="intro-box">
+            <p>
+                <center>
+                <h3>우리 사이트는 우리나라에 있는 전시와 공연 정보를 모아 전달해드립니다.</h3>
+                <h3>관심 있는 전시와 공연은 놓치지 마세요!</h3>
+                </center>
+            </p>     
         </div>
+        <div class="wrap_pics">
+            <div class="two_images">
+                <!-- <div class="floating_text">
+                    <h1>전시</h1>
+                </div> -->
+                <a href="C:\Users\heoyj\Desktop\hh99_mkheo\hanghae99-first-project\templates\artShow">
+                    <h1>전시</h1>
+                </a>
+                <img class="card-img-top"
+                    src="https://post-phinf.pstatic.net/MjAxNzA0MTBfMjU4/MDAxNDkxODEyODc5NTkw.GMNb3XJGGFpCpYYum69KaviHgZr19uOP1P9UOPaUI-og.xLYOdT7ByW2vQ85yH2gAC1MiOM5vw0ZtoFqddWxQht4g.JPEG/%EA%B3%B5%EC%9C%A03.jpg?type=w1200"
+                    alt="Card image cap">
+            </div>
+            <div class="two_images">
+                <!-- <div class="floating_text">
+                    <h1>공연</h1>
+                </div> -->
+                <a href="C:\Users\heoyj\Desktop\hh99_mkheo\hanghae99-first-project\templates\performance">
+                    <h1>공연</h1>
+                </a>
+                <img class="card-img-top"
+                    src="https://image.ajunews.com/content/image/2016/11/28/20161128223905832496.jpg"
+                    alt="Card image cap">           
+            </div>
+                <!-- 전시 or 공연 글자가 들어가고 클릭하면 전시 정보 or 공연 정보 링크 되게 -->
+            </div>
+        </div    
     </div>
 </body>
 
 </html>
-```
