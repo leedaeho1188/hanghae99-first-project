@@ -1,3 +1,114 @@
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+    padding-bottom: 40px;
+}
+
+.wrap {
+    width: 90%;
+    margin: auto;
+}
+
+.title_line {
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center; 
+    width: 100%;
+    margin-top: 30px;
+    margin-bottom: 70px;
+}
+
+
+.wrap_pics {
+    display: flex;
+    width: 85%;
+    margin: auto;
+    margin-top: 70px;
+}
+
+.nav_left {
+    display: flex;
+    align-items: center;
+}
+
+.introducing_box {
+    display: none;
+    width: 80%;
+    margin: 20px auto 30px auto;
+    border: 3px solid black;
+    border-radius: 10px;
+    padding: 40px;
+    
+}
+
+.two_images {
+    height: auto;
+    padding: 10px;
+    width: 100%;
+}
+.two_images a {
+    text-decoration: none;
+    color: black;
+}
+.two_images a p {
+    display: inline-block
+}
+
+
+.card-img-bottom {
+    border-radius: 6px;
+    height: auto;
+    width: 100%;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.12), 0 2px 5px rgba(0,0,0,0.24);
+}
+
+.card-img-bottom:hover{
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    transform: translateY(-8px);
+}
+
+button{
+    background-color: transparent;
+    border-radius: 4px;
+    cursor: pointer;
+    outline: none;
+}
+.introduce{
+    margin-left: 30px;
+}
+.introduce_btn {
+    font-size: 20px;
+    border: none;
+    
+}
+.nav_right{
+    display: flex;
+    align-items: center;
+}
+.login_btn {
+    font-size: 20px;
+    padding: 4px 8px;
+}
+.signUp {
+    margin-right: 20px; 
+}
+.signUp_btn{
+    border: none;
+    font-size: 20px;
+}
+.signUp_btn:hover {
+    font-weight: bold;
+}
+.introduce_btn:hover {
+    font-weight: bold;
+}
+.login_btn:hover{
+    font-weight: bold;
+}
+.introducing-box-content {
+    text-align: center;
+}
+
 .main_container_login{
     position: absolute;
     display: none;

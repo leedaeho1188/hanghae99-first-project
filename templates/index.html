@@ -26,12 +26,28 @@
     <script src="./login.js" type="text/javascript"></script>
     <script type="text/javascript">
 
-        function openclose() {
+        function openclose_introduce() {
             let status = $('#intro-box').css('display');
             if (status == 'block') {
                 $('#intro-box').hide()
             } else {
                 $('#intro-box').show()
+            }
+        }
+        function openclose_signUp(){
+            let status = $('#sign_box').css('display');
+            if (status == 'block') {
+                $('#sign_box').hide()
+            } else {
+                $('#sign_box').show()
+            }
+        }
+        function openclose_login(){
+            let status = $('#login_box').css('display');
+            if (status == 'block') {
+                $('#login_box').hide()
+            } else {
+                $('#login_box').show()
             }
         }
 
@@ -52,119 +68,27 @@
     }
 
     </script>
-
-    <style type="text/css">
-        body {
-            font-family: 'Noto Sans KR', sans-serif;
-            padding-bottom: 40px;
-        }
-
-        .wrap {
-            width: 90%;
-            margin: auto;
-        }
-
-        .title_line {
-            margin: auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center; 
-            width: 100%;
-            margin-top: 30px;
-            margin-bottom: 70px;
-        }
-
-
-        .wrap_pics {
-            display: flex;
-            width: 85%;
-            margin: auto;
-            margin-top: 70px;
-        }
-
-        .culture-box {
-            display: flex;
-            align-items: center;
-        }
-
-        .introducing_box {
-            display: none;
-            width: 80%;
-            margin: 20px auto 30px auto;
-            border: 3px solid black;
-            border-radius: 10px;
-            padding: 40px;
-            
-        }
-
-        .two_images {
-            height: auto;
-            padding: 10px;
-            width: 100%;
-        }
-        .two_images a {
-            text-decoration: none;
-            color: black;
-        }
-        .two_images a p {
-            display: inline-block
-        }
-
-
-        .card-img-bottom {
-            border-radius: 6px;
-            height: auto;
-            width: 100%;
-            box-shadow: 0 3px 6px rgba(0,0,0,0.12), 0 2px 5px rgba(0,0,0,0.24);
-        }
-
-        .card-img-bottom:hover{
-            box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
-            transform: translateY(-8px);
-        }
-
-        button{
-            background-color: transparent;
-            border-radius: 4px;
-            cursor: pointer;
-            outline: none;
-        }
-        .introduce_btn {
-            font-size: 30px;
-            border: none;
-            
-        }
-        .login_btn {
-            font-size: 20px;
-            padding: 4px 8px;
-        }
-        .introduce_btn:hover {
-            font-weight: bold;
-        }
-        .login_btn:hover{
-            font-weight: bold;
-        }
-        .introducing-box-content {
-            text-align: center;
-        }
-
-    </style>
 </head>
 <body>
     <div class="wrap">
         <div class = "title_line">
-            <div class="culture-box">
+            <div class="nav_left">
                 <a href="#">
                     <img class="card-img-top"
                     src="share_culture.jpg" alt="Card image cap" width="80px" height="80px">
                 </a>
                 <div class="introduce">
-                    <button onclick="openclose()" id="btn-introducing-box" class="introduce_btn btn" href="#" role="button">사이트 소개</button>
+                    <button onclick="openclose_introduce()" id="btn-introducing-box" class="introduce_btn btn" href="#" role="button">사이트 소개</button>
                 </div>
             </div>
-            <div class="login">
-                <button href="#" class="login_btn btn" role="button" aria-pressed="true">로그인</button>
-            </div>            
+            <div class="nav_right">
+                <div class="signUp">
+                    <button href="#" class="signUp_btn btn" role="button" aria-pressed="true" onclick="openclose_signUp()">회원가입</button>
+                </div>  
+                <div class="login">
+                    <button href="#" class="login_btn btn" role="button" aria-pressed="true" onclick="openclose_login()">로그인</button>
+                </div>            
+            </div>
         </div>
 
         <div class="introducing-box" id="intro-box">
@@ -191,8 +115,7 @@
             </div>
         </div>   
     </div>
-    <div id="container" class="main_container_login">
-        <div style="padding: 20px;"></div>
+    <div id="login_box" class="main_container_login">
         <div class="login_container">
             <div class="form_container">
                 <form name="login_form" action="/cookie" method="get">
@@ -225,8 +148,7 @@
             </div>
         </div>
     </div>
-    <div id="container" class="main_container_signUp">
-        <div style="padding: 20px;"></div>
+    <div id="sign_box" class="main_container_signUp">
         <div class="signUp_container">
             <div class="form_container">
                 <form name="login_form" action="/cookie" method="get">
