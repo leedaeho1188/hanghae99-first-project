@@ -23,8 +23,13 @@ def performance():
 
 @app.route('/artshow', methods=['GET'])
 def listingArtShow():
-    blogs = list(db.Share_artShow.find({}, {'_id': False})
-    return jsonify({'all_blogs': blogs})
+   blogs = list(db.Share_artShow.find({}, {'_id': False}))
+   return jsonify({'all_blogs': blogs})
+
+@app.route('/performance', methods=['GET'])
+def listingPerformance():
+   blogs = list(db.Share_Performance.find({}, {'_id': False}))
+   return jsonify({'all_blogs': blogs})
 
 
 if __name__ == '__main__':

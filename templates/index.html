@@ -10,21 +10,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- JS -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-        crossorigin="anonymous"></script>
+    
+    <!-- 구글폰트 -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script defer type="text/javascript" src="{{url_for('static', filename='login.js')}}"></script>
     <script
         src="https://code.jquery.com/jquery-3.5.1.js"
         integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
         crossorigin="anonymous">
     </script>
-    <!-- 구글폰트 -->
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./style_login.css" type="text/css" media="all" />
-    <script src="./login.js" type="text/javascript"></script>
-    <script type="text/javascript">
+    <script>
 
         function openclose_introduce() {
             let status = $('#intro-box').css('display');
@@ -52,19 +49,19 @@
         }
 
         function hover1(element) {
-    element.setAttribute('src', './kong2_text.jpg');
+    element.setAttribute('src', '{{url_for('static', filename='kong2_text.jpg')}}');
     }
 
     function unhover1(element) {
-    element.setAttribute('src', './kong2_notext.jpg');
+    element.setAttribute('src', '{{url_for('static', filename='kong2_notext.jpg')}}');
     }
 
     function hover2(element) {
-    element.setAttribute('src', './kong1_text.jpg');
+    element.setAttribute('src', '{{url_for('static', filename='kong1_text.jpg')}}');
     }
 
     function unhover2(element) {
-    element.setAttribute('src', './kong1_notext.jpg');
+    element.setAttribute('src', '{{url_for('static', filename='kong1_notext.jpg')}}');
     }
 
     </script>
@@ -75,7 +72,7 @@
             <div class="nav_left">
                 <a href="#">
                     <img class="card-img-top"
-                    src="share_culture.jpg" alt="Card image cap" width="80px" height="80px">
+                    src="{{url_for('static', filename='share_culture.jpg')}}" alt="Card image cap" width="80px" height="80px">
                 </a>
                 <div class="introduce">
                     <button onclick="openclose_introduce()" id="btn-introducing-box" class="introduce_btn btn" href="#" role="button">사이트 소개</button>
@@ -99,17 +96,17 @@
         </div>
         <div class="wrap_pics">
             <div class="two_images">
-                <a class="two_images_artShow" href="C:\Users\heoyj\Desktop\hh99_mkheo\hanghae99-first-project\templates\artShow">
+                <a class="two_images_artShow" href="{{ url_for('artShow')}}">
                     <img class="card-img-bottom"
-                    src="./kong2_notext.jpg"
+                    src="{{url_for('static', filename='kong2_notext.jpg')}}"
                     alt="Card image cap" onmouseover="hover1(this);" onmouseout="unhover1(this)">
                 </a>
                 
             </div>
             <div class="two_images">
-                <a class="two_images_performance" href="C:\Users\heoyj\Desktop\hh99_mkheo\hanghae99-first-project\templates\performance">
+                <a class="two_images_performance" href="{{ url_for('performance')}}">
                     <img class="card-img-bottom"
-                    src="./kong1_notext.jpg"
+                    src="{{url_for('static', filename='kong1_notext.jpg')}}"
                     alt="Card image cap" onmouseover="hover2(this)" onmouseout="unhover2(this)">
                 </a>          
             </div>
@@ -125,7 +122,7 @@
                     <div>
                         <div>
                             <label class="form_item_name" for="Email">이메일</label>
-                            <input type="text" id="Email" name="email" placeholder="E-mail" class="form_input"/>
+                            <input type="text" name="email" placeholder="E-mail" class="form_input"/>
                         </div>
                         <div class="form_text_alert_padding">
                             <div id="alert_email" class="form_text_alert"></div>
@@ -134,7 +131,7 @@
                     <div>
                         <div>
                             <label class="form_item_name" for="psw">비밀번호</label>
-                            <input id="psw" type="password" name="password" placeholder="Enter password" class="form_input" />
+                            <input  type="password" name="password" placeholder="Enter password" class="form_input" />
                         </div>
                         <div class="form_text_alert_padding">
                             <div id="alert_password" class="form_text_alert"></div>
