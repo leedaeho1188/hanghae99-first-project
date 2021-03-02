@@ -30,6 +30,22 @@
             }
         }
 
+        function hover1(element) {
+            element.setAttribute('src', './kong2_text.jpg');
+        }
+
+        function unhover1(element) {
+            element.setAttribute('src', './kong2_notext.jpg');
+        }
+
+        function hover2(element) {
+            element.setAttribute('src', './kong1_text.jpg');
+        }
+
+        function unhover2(element) {
+            element.setAttribute('src', './kong1_notext.jpg');
+        }
+
     </script>
 
     <style type="text/css">
@@ -40,7 +56,6 @@
 
         .wrap {
             width: 90%;
-            justify-self: center;
             margin: auto;
         }
 
@@ -50,16 +65,61 @@
             justify-content: space-between;
             align-items: center;
             width: 100%;
+            margin-top: 30px;
+            margin-bottom: 70px;
         }
 
+
         .wrap_pics {
-            width: 90%;
-            height: 900px;
+            display: flex;
+            width: 85%;
             margin: auto;
+            margin-top: 70px;
         }
 
         .culture-box {
-            align-self: center;
+            display: flex;
+            align-items: center;
+        }
+
+        .introducing_box {
+            display: none;
+            width: 80%;
+            margin: 20px auto 30px auto;
+            border: 3px solid black;
+            border-radius: 10px;
+            padding: 40px;
+
+        }
+
+        button {
+            background-color: transparent;
+            border-radius: 4px;
+            cursor: pointer;
+            outline: none;
+        }
+
+        .introduce_btn {
+            font-size: 30px;
+            border: none;
+
+        }
+
+        .login_btn {
+            font-size: 20px;
+            padding: 4px 8px;
+        }
+
+        .introduce_btn:hover {
+            font-weight: bold;
+        }
+
+        .login_btn:hover {
+            font-weight: bold;
+        }
+
+        .introducing-box-content {
+            text-align: center;
         }
 
         .card-padding {
@@ -73,23 +133,23 @@
     </style>
     <script>
         function showInfos() {
-                $.ajax({
-                    type: "GET",
-                    url: "/artShow",
-                    data: {},
-                    success: function (response) {
-                        let infos = response['all_blogs']
-                        for (let i = 0; i < infos.length; i++) {
-                            let image = infos[i]['image']
-                            let url = infos[i]['url']
-                            let title = infos[i]['title']
-                            let date = infos[i]['date']
-                            let loc = infos[i]['loc']
-                            let loc_detail = infos[i]['loc_detail']
-                            
+            $.ajax({
+                type: "GET",
+                url: "/artShow",
+                data: {},
+                success: function (response) {
+                    let infos = response['all_blogs']
+                    for (let i = 0; i < infos.length; i++) {
+                        let image = infos[i]['image']
+                        let url = infos[i]['url']
+                        let title = infos[i]['title']
+                        let date = infos[i]['date']
+                        let loc = infos[i]['loc']
+                        let loc_detail = infos[i]['loc_detail']
 
-                            //console.log(title, desc, image, comment, url)
-                            let temp_html = `<div class="card" class="card-padding">
+
+                        //console.log(title, desc, image, comment, url)
+                        let temp_html = `<div class="card" class="card-padding">
                                             <img class="card-img-top"
                                                  src="${image}"
                                                  alt="Card image cap">
@@ -101,13 +161,13 @@
                                                 <h4 class="card-text" class="red-text">${loc}</h4><h5 class="card-text">${loc_detail}<h5>
                                             </div>
                                         </div>`
-                            $('#cards-box').append(temp_html)
-                        }
-                        //console.log(articles)
-                        //alert(response["msg"]);
+                        $('#cards-box').append(temp_html)
                     }
-                })
-            }
+                    //console.log(articles)
+                    //alert(response["msg"]);
+                }
+            })
+        }
     </script>
 
 </head>
@@ -119,10 +179,10 @@
                 <a href="#">
                     <img class="card-img-top" src="share_culture.jpg" alt="Card image cap" width="80px" height="80px">
                 </a>
-            </div>
-            <div class="introduce">
-                <button onclick="openclose()" id="btn-introducing-box" class="introduce_btn btn" href="#" role="button">사이트
-                    소개</button>
+                <div class="introduce">
+                    <button onclick="openclose()" id="btn-introducing-box" class="introduce_btn btn" href="#"
+                        role="button">사이트 소개</button>
+                </div>
             </div>
             <div class="login">
                 <button href="#" class="login_btn btn" role="button" aria-pressed="true">로그인</button>
@@ -140,8 +200,5 @@
                     <p class="card-text comment">여기에 코멘트가 들어갑니다.</p>
                 </div>
             </div> -->
-        </div>    
+        </div>
 </body>
-
-
-
