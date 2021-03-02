@@ -50,12 +50,15 @@
             justify-content: space-between;
             align-items: center; 
             width: 100%;
+            margin-bottom: 70px;
         }
 
+
         .wrap_pics {
-            width: 90%;
-            height: 900px;
+            display: flex;
+            width: 85%;
             margin: auto;
+            margin-top: 70px;
         }
 
         .culture-box {
@@ -73,10 +76,24 @@
         }
 
         .two_images {
-            float: left;
+            height: auto;
             padding: 10px;
-            width: 50%;
-            overflow: hidden;
+            width: 100%;
+        }
+        .two_images a {
+            text-decoration: none;
+            color: black;
+        }
+        .two_images a p {
+            display: inline-block
+        }
+
+
+        .card-img-bottom {
+            border-radius: 6px;
+            height: auto;
+            width: 100%;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.12), 0 2px 5px rgba(0,0,0,0.24);
         }
         button{
             background-color: transparent;
@@ -95,17 +112,12 @@
         }
         .introduce_btn:hover {
             font-weight: bold;
-            color: #3d75ca;
         }
         .login_btn:hover{
-            padding: 6px 10px;
-            border: none;
-            background-color: #3d75ca;
-            color: white;
             font-weight: bold;
         }
-        .wrap_pics{
-            display: flex;
+        .introducing-box-content {
+            text-align: center;
         }
 
     </style>
@@ -129,34 +141,30 @@
         </div>
 
         <div class="introducing-box" id="intro-box">
-            <p>
-                <center>
-                <h3>우리 사이트는 우리나라에 있는 전시와 공연 정보를 모아 전달해드립니다.</h3>
-                <h3>관심 있는 전시와 공연은 놓치지 마세요!</h3>
-                </center>
+            <p class="introducing-box-content">
+                우리 사이트는 우리나라에 있는 전시와 공연 정보를 모아 전달해드립니다.<br>
+                관심 있는 전시와 공연은 놓치지 마세요!
             </p>     
         </div>
         <div class="wrap_pics">
             <div class="two_images">
-                <a href="C:\Users\heoyj\Desktop\hh99_mkheo\hanghae99-first-project\templates\artShow">
-                    <h1>전시</h1>
-                    <img class="card-img-top"
+                <a class="two_images_artShow" href="C:\Users\heoyj\Desktop\hh99_mkheo\hanghae99-first-project\templates\artShow">
+                    <img class="card-img-bottom"
                     src="https://post-phinf.pstatic.net/MjAxNzA0MTBfMjU4/MDAxNDkxODEyODc5NTkw.GMNb3XJGGFpCpYYum69KaviHgZr19uOP1P9UOPaUI-og.xLYOdT7ByW2vQ85yH2gAC1MiOM5vw0ZtoFqddWxQht4g.JPEG/%EA%B3%B5%EC%9C%A03.jpg?type=w1200"
                     alt="Card image cap">
                 </a>
                 
             </div>
             <div class="two_images">
-                <a href="C:\Users\heoyj\Desktop\hh99_mkheo\hanghae99-first-project\templates\performance">
-                    <h1>공연</h1>
-                    <img class="card-img-top"
+                <a class="two_images_performance" href="C:\Users\heoyj\Desktop\hh99_mkheo\hanghae99-first-project\templates\performance">
+                    <img class="card-img-bottom"
                     src="https://image.ajunews.com/content/image/2016/11/28/20161128223905832496.jpg"
                     alt="Card image cap">
                 </a>          
             </div>
                 <!-- 전시 or 공연 글자가 들어가고 클릭하면 전시 정보 or 공연 정보 링크 되게 -->
-            </div>
-        </div    
+            
+        </div>    
     </div>
 </body>
 
