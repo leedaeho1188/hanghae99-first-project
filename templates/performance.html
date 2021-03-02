@@ -29,6 +29,22 @@
                 $('#intro-box').show()
             }
         }
+        
+        function hover1(element) {
+                element.setAttribute('src', './kong2_text.jpg');
+            }
+
+            function unhover1(element) {
+                element.setAttribute('src', './kong2_notext.jpg');
+            }
+
+            function hover2(element) {
+                element.setAttribute('src', './kong1_text.jpg');
+            }
+
+            function unhover2(element) {
+                element.setAttribute('src', './kong1_notext.jpg');
+            }
 
     </script>
 
@@ -40,7 +56,6 @@
 
         .wrap {
             width: 90%;
-            justify-self: center;
             margin: auto;
         }
 
@@ -48,20 +63,64 @@
             margin: auto;
             display: flex;
             justify-content: space-between;
-            align-items: center;
+            align-items: center; 
             width: 100%;
+            margin-top: 30px;
+            margin-bottom: 70px;
         }
 
+
         .wrap_pics {
-            width: 90%;
-            height: 900px;
+            display: flex;
+            width: 85%;
             margin: auto;
+            margin-top: 70px;
         }
 
         .culture-box {
-            align-self: center;
+            display: flex;
+            align-items: center;
         }
 
+        .introducing_box {
+            display: none;
+            width: 80%;
+            margin: 20px auto 30px auto;
+            border: 3px solid black;
+            border-radius: 10px;
+            padding: 40px;
+            
+        }
+
+        button{
+            background-color: transparent;
+            border-radius: 4px;
+            cursor: pointer;
+            outline: none;
+        }
+
+        .introduce_btn {
+            font-size: 30px;
+            border: none;
+            
+        }
+        .login_btn {
+            font-size: 20px;
+            padding: 4px 8px;    
+        }
+
+        .introduce_btn:hover {
+            font-weight: bold;
+        }
+
+        .login_btn:hover{
+            font-weight: bold;
+        }
+
+        .introducing-box-content {
+            text-align: center;
+        }
+        
         .card-padding {
             padding: 2px;
             border: solid 1px grey;
@@ -70,6 +129,7 @@
         .red-text {
             color: red;
         }
+
     </style>
     <script>
         function showInfos() {
@@ -119,11 +179,10 @@
                 <a href="#">
                     <img class="card-img-top" src="share_culture.jpg" alt="Card image cap" width="80px" height="80px">
                 </a>
-            </div>
-            <div class="introduce">
-                <button onclick="openclose()" id="btn-introducing-box" class="introduce_btn btn" href="#"
-                    role="button">사이트
-                    소개</button>
+                <div class="introduce">
+                    <button onclick="openclose()" id="btn-introducing-box" class="introduce_btn btn" href="#"
+                        role="button">사이트 소개</button>
+                </div>
             </div>
             <div class="login">
                 <button href="#" class="login_btn btn" role="button" aria-pressed="true">로그인</button>
