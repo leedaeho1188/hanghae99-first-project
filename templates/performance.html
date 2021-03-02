@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <!-- Webpage Title -->
+    <title>공유문화 | 전시 공연 정보 길잡이</title>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+
+    <!-- 구글폰트 -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+
+    <script type="text/javascript">
+
+        function openclose() {
+            let status = $('#intro-box').css('display');
+            if (status == 'block') {
+                $('#intro-box').hide()
+            } else {
+                $('#intro-box').show()
+            }
+        }
+
+    </script>
+
+    <style type="text/css">
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            padding-bottom: 40px;
+        }
+
+        .wrap {
+            width: 90%;
+            justify-self: center;
+            margin: auto;
+        }
+
+        .title_line {
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        .wrap_pics {
+            width: 90%;
+            height: 900px;
+            margin: auto;
+        }
+
+        .culture-box {
+            align-self: center;
+        }
+
+        .card-padding {
+            padding: 2px;
+            border: solid 1px grey;
+        }
+
+        .red-text {
+            color: red;
+        }
+    </style>
+    <script>
+        function showInfos() {
+            $.ajax({
+                type: "GET",
+                url: "/Performance",
+                data: {},
+                success: function (response) {
+                    let infos = response['all_blogs']
+                    for (let i = 0; i < infos.length; i++) {
+                        let image = infos[i]['image']
+                        let url = infos[i]['url']
+                        let title = infos[i]['title']
+                        let date = infos[i]['date']
+                        let loc = infos[i]['loc']
+                        let loc_detail = infos[i]['loc_detail']
+
+
+                        //console.log(title, desc, image, comment, url)
+                        let temp_html = `<div class="card" class="card-padding">
+                                            <img class="card-img-top"
+                                                 src="${image}"
+                                                 alt="Card image cap">
+                                            <div class="card-body">
+                                                <a target="_blank" href="${url}" class="card-title">${title}</a>
+                                                <hr style="border: solid 1px grey;"">
+                                                <h4 class="card-text">${date}</h4>
+                                                <hr style="border: solid 1px grey;">
+                                                <h4 class="card-text" class="red-text">${loc}</h4><h5 class="card-text">${loc_detail}<h5>
+                                            </div>
+                                        </div>`
+                        $('#cards-box').append(temp_html)
+                    }
+                    //console.log(articles)
+                    //alert(response["msg"]);
+                }
+            })
+        }
+    </script>
+
+</head>
+
+<body>
+    <div class="wrap">
+        <div class="title_line">
+            <div class="culture-box">
+                <a href="#">
+                    <img class="card-img-top" src="share_culture.jpg" alt="Card image cap" width="80px" height="80px">
+                </a>
+            </div>
+            <div class="introduce">
+                <button onclick="openclose()" id="btn-introducing-box" class="introduce_btn btn" href="#"
+                    role="button">사이트
+                    소개</button>
+            </div>
+            <div class="login">
+                <button href="#" class="login_btn btn" role="button" aria-pressed="true">로그인</button>
+            </div>
+        </div>
+
+        <div class="card-columns" id="cards-box">
+            <!-- <div class="card">
+                <img class="card-img-top"
+                    src="https://d2ur7st6jjikze.cloudfront.net/offer_photos/29590/185689_medium_1525763241.jpg?1525763241"
+                    alt="Card image cap">
+                <div class="card-body">
+                    <a href="http://naver.com" class="card-title">여기 기사 제목이 들어가죠</a>
+                    <p class="card-text">기사의 요약 내용이 들어갑니다. 동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라만세 무궁화 삼천리 화려강산...</p>
+                    <p class="card-text comment">여기에 코멘트가 들어갑니다.</p>
+                </div>
+            </div> -->
+        </div>
+</body>
