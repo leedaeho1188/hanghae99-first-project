@@ -10,6 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- JS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
         integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
@@ -21,7 +22,7 @@
 
     <script type="text/javascript">
 
-        function openclose() {
+    function openclose_introduce() {
             let status = $('#intro-box').css('display');
             if (status == 'block') {
                 $('#intro-box').hide()
@@ -29,113 +30,33 @@
                 $('#intro-box').show()
             }
         }
-        
-        function hover1(element) {
-                element.setAttribute('src', './kong2_text.jpg');
+        function openclose_signUp(){
+            let status = $('#sign_box').css('display');
+            if (status == 'block') {
+                $('#sign_box').hide()
+            } else {
+                $('#sign_box').show()
             }
-
-            function unhover1(element) {
-                element.setAttribute('src', './kong2_notext.jpg');
+        }
+        function openclose_login(){
+            let status = $('#login_box').css('display');
+            if (status == 'block') {
+                $('#login_box').hide()
+            } else {
+                $('#login_box').show()
             }
-
-            function hover2(element) {
-                element.setAttribute('src', './kong1_text.jpg');
-            }
-
-            function unhover2(element) {
-                element.setAttribute('src', './kong1_notext.jpg');
-            }
+        }
 
     </script>
 
-    <style type="text/css">
-        body {
-            font-family: 'Noto Sans KR', sans-serif;
-            padding-bottom: 40px;
-        }
-
-        .wrap {
-            width: 90%;
-            margin: auto;
-        }
-
-        .title_line {
-            margin: auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center; 
-            width: 100%;
-            margin-top: 30px;
-            margin-bottom: 70px;
-        }
-
-
-        .wrap_pics {
-            display: flex;
-            width: 85%;
-            margin: auto;
-            margin-top: 70px;
-        }
-
-        .culture-box {
-            display: flex;
-            align-items: center;
-        }
-
-        .introducing_box {
-            display: none;
-            width: 80%;
-            margin: 20px auto 30px auto;
-            border: 3px solid black;
-            border-radius: 10px;
-            padding: 40px;
-            
-        }
-
-        button{
-            background-color: transparent;
-            border-radius: 4px;
-            cursor: pointer;
-            outline: none;
-        }
-
-        .introduce_btn {
-            font-size: 30px;
-            border: none;
-            
-        }
-        .login_btn {
-            font-size: 20px;
-            padding: 4px 8px;    
-        }
-
-        .introduce_btn:hover {
-            font-weight: bold;
-        }
-
-        .login_btn:hover{
-            font-weight: bold;
-        }
-
-        .introducing-box-content {
-            text-align: center;
-        }
-        
-        .card-padding {
-            padding: 2px;
-            border: solid 1px grey;
-        }
-
-        .red-text {
-            color: red;
-        }
-
-    </style>
     <script>
+        $(document).ready(function () {
+            showInfos();
+            });
         function showInfos() {
             $.ajax({
                 type: "GET",
-                url: "/Performance",
+                url: "/performance",
                 data: {},
                 success: function (response) {
                     let infos = response['all_blogs']
@@ -146,19 +67,23 @@
                         let date = infos[i]['date']
                         let loc = infos[i]['loc']
                         let loc_detail = infos[i]['loc_detail']
-
-
-                        //console.log(title, desc, image, comment, url)
                         let temp_html = `<div class="card" class="card-padding">
-                                            <img class="card-img-top"
-                                                 src="${image}"
-                                                 alt="Card image cap">
+                                            <div class="card-img">
+                                                <a href="${url}">
+                                                    <img class="card-img-Top"
+                                                        src="${image}"
+                                                        alt="image">
+                                                </a>
+                                            </div>
                                             <div class="card-body">
                                                 <a target="_blank" href="${url}" class="card-title">${title}</a>
                                                 <hr style="border: solid 1px grey;"">
-                                                <h4 class="card-text">${date}</h4>
+                                                <div class="card-text">${date}</div>
                                                 <hr style="border: solid 1px grey;">
-                                                <h4 class="card-text" class="red-text">${loc}</h4><h5 class="card-text">${loc_detail}<h5>
+                                            </div>
+                                            <div class="card-footer">
+                                                <div class="card-text" class="red-text">${loc}</div>
+                                                <div class="card-text">${loc_detail}</div>
                                             </div>
                                         </div>`
                         $('#cards-box').append(temp_html)
@@ -176,8 +101,8 @@
     <div class="wrap">
         <div class="title_line">
             <div class="culture-box">
-                <a href="#">
-                    <img class="card-img-top" src="share_culture.jpg" alt="Card image cap" width="80px" height="80px">
+                <a href="{{ url_for('Home')}}">
+                    <img class="card-img-top" src="{{url_for('static', filename='share_culture.jpg')}}" alt="Card image cap" width="80px" height="80px">
                 </a>
                 <div class="introduce">
                     <button onclick="openclose()" id="btn-introducing-box" class="introduce_btn btn" href="#"
@@ -190,15 +115,90 @@
         </div>
 
         <div class="card-columns" id="cards-box">
-            <!-- <div class="card">
-                <img class="card-img-top"
-                    src="https://d2ur7st6jjikze.cloudfront.net/offer_photos/29590/185689_medium_1525763241.jpg?1525763241"
-                    alt="Card image cap">
-                <div class="card-body">
-                    <a href="http://naver.com" class="card-title">여기 기사 제목이 들어가죠</a>
-                    <p class="card-text">기사의 요약 내용이 들어갑니다. 동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라만세 무궁화 삼천리 화려강산...</p>
-                    <p class="card-text comment">여기에 코멘트가 들어갑니다.</p>
+
+        </div>
+        <div id="login_box" class="main_container_login">
+            <div class="login_container">
+                <div class="form_container">
+                    <form name="login_form" action="/cookie" method="get">
+                        <div class="form_title_div">
+                            <p class="form_title_p">로그인</p>
+                        </div>
+                        <div>
+                            <div>
+                                <label class="form_item_name" for="Email">이메일</label>
+                                <input type="text" name="email" placeholder="E-mail" class="form_input"/>
+                            </div>
+                            <div class="form_text_alert_padding">
+                                <div id="alert_email" class="form_text_alert"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div>
+                                <label class="form_item_name" for="psw">비밀번호</label>
+                                <input  type="password" name="password" placeholder="Enter password" class="form_input" />
+                            </div>
+                            <div class="form_text_alert_padding">
+                                <div id="alert_password" class="form_text_alert"></div>
+                            </div>
+                        </div>
+                        <div style="height: 10px;"></div>
+                        <div>
+                            <button type="button" class="form_Login_button" onclick="login()">로그인</button>
+                        </div>
+                    </form>
                 </div>
-            </div> -->
+            </div>
+        </div>
+        <div id="sign_box" class="main_container_signUp">
+            <div class="signUp_container">
+                <div class="form_container">
+                    <form name="login_form" action="/cookie" method="get">
+                        <div class="form_title_div">
+                            <p class="form_title_p">회원가입</p>
+                        </div>
+                        <div>
+                            <div>
+                                <label class="form_item_name" for="userName">이름</label>
+                                <input type="text" id="userName" name="username" placeholder="name" class="form_input"/>
+                            </div>
+                            <div class="form_text_alert_padding">
+                                <div id="alert_username" class="form_text_alert"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div>
+                                <label class="form_item_name" for="Email">이메일</label>
+                                <input type="text" id="Email" name="email" placeholder="E-mail" class="form_input"/>
+                            </div>
+                            <div class="form_text_alert_padding">
+                                <div id="alert_email" class="form_text_alert"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div>
+                                <label class="form_item_name" for="psw">비밀번호</label>
+                                <input id="psw" type="password" name="password" placeholder="Enter password" class="form_input" />
+                            </div>
+                            <div class="form_text_alert_padding">
+                                <div id="alert_password" class="form_text_alert"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div>
+                                <label class="form_item_name" for="confirm_psw">비밀번호 확인</label>
+                                <input  id="confirm_psw" type="password" name="password2" onfocus="" placeholder="Enter password again" class="form_input" />
+                            </div>      
+                            <div class="form_text_alert_padding">
+                                <div id="alert_password2" class="form_text_alert"></div>
+                            </div>
+                        </div>
+                        <div style="height: 10px;"></div>
+                        <div>
+                            <button type="button" class="form_submit_button" onclick="login()">회원가입</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
 </body>

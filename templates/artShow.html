@@ -49,89 +49,7 @@
 
     </script>
 
-    <style type="text/css">
-        body {
-            font-family: 'Noto Sans KR', sans-serif;
-            padding-bottom: 40px;
-        }
-
-        .wrap {
-            width: 90%;
-            margin: auto;
-        }
-
-        .title_line {
-            margin: auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            width: 100%;
-            margin-top: 30px;
-            margin-bottom: 70px;
-        }
-
-
-        .wrap_pics {
-            display: flex;
-            width: 85%;
-            margin: auto;
-            margin-top: 70px;
-        }
-
-        .culture-box {
-            display: flex;
-            align-items: center;
-        }
-
-        .introducing_box {
-            display: none;
-            width: 80%;
-            margin: 20px auto 30px auto;
-            border: 3px solid black;
-            border-radius: 10px;
-            padding: 40px;
-
-        }
-
-        button {
-            background-color: transparent;
-            border-radius: 4px;
-            cursor: pointer;
-            outline: none;
-        }
-
-        .introduce_btn {
-            font-size: 30px;
-            border: none;
-
-        }
-
-        .login_btn {
-            font-size: 20px;
-            padding: 4px 8px;
-        }
-
-        .introduce_btn:hover {
-            font-weight: bold;
-        }
-
-        .login_btn:hover {
-            font-weight: bold;
-        }
-
-        .introducing-box-content {
-            text-align: center;
-        }
-
-        .card-padding {
-            padding: 2px;
-            border: solid 1px grey;
-        }
-
-        .red-text {
-            color: red;
-        }
-    </style>
+   
     <script>
         $(document).ready(function () {
             showInfos();
@@ -168,7 +86,6 @@
                                                 <div class="card-text" class="red-text">${loc}</div>
                                                 <div class="card-text">${loc_detail}</div>
                                             </div>
-    
                                         </div>`
                         $('#cards-box').append(temp_html)
                     }
@@ -185,7 +102,7 @@
     <div class="wrap">
         <div class = "title_line">
             <div class="nav_left">
-                <a href="#">
+                <a href="{{ url_for('Home')}}">
                     <img class="card-img-top"
                     src="{{url_for('static', filename='share_culture.jpg')}}" alt="Card image cap" width="80px" height="80px">
                 </a>
