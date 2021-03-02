@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <!-- Webpage Title -->
+    <title>공유문화 | 전시 공연 정보 길잡이</title>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+
+    <!-- 구글폰트 -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+
+    <script type="text/javascript">
+
+        function openclose() {
+            let status = $('#intro-box').css('display');
+            if (status == 'block') {
+                $('#intro-box').hide()
+            } else {
+                $('#intro-box').show()
+            }
+        }
+            
+    </script>
+
+    <style type="text/css">
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            padding-bottom: 40px;
+        }
+
+        .wrap {
+            width: 90%;
+            justify-self: center;
+            margin: auto;
+        }
+
+        .title_line {
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center; 
+            width: 100%;
+        }
+
+        .wrap_pics {
+            width: 90%;
+            height: 900px;
+            margin: auto;
+        }
+
+        .culture-box {
+            align-self: center;
+        }
+
+        .introducing_box {
+            display: none;
+            width: 80%;
+            margin: 20px auto 30px auto;
+            border: 3px solid black;
+            border-radius: 10px;
+            padding: 40px;
+            
+        }
+
+        .two_images {
+            float: left;
+            padding: 10px;
+            width: 50%;
+            overflow: hidden;
+        }
+        button{
+            background-color: transparent;
+            border-radius: 4px;
+            cursor: pointer;
+            outline: none;
+        }
+        .introduce_btn {
+            font-size: 30px;
+            border: none;
+            
+        }
+        .login_btn {
+            font-size: 20px;
+            padding: 4px 8px;
+        }
+        .introduce_btn:hover {
+            font-weight: bold;
+            color: #3d75ca;
+        }
+        .login_btn:hover{
+            padding: 6px 10px;
+            border: none;
+            background-color: #3d75ca;
+            color: white;
+            font-weight: bold;
+        }
+        .wrap_pics{
+            display: flex;
+        }
+
+    </style>
+</head>
+`
+<body>
+    <div class="wrap">
+        <div class = "title_line">
+            <div class="culture-box">
+                <a href="#">
+                    <img class="card-img-top"
+                    src="share_culture.jpg" alt="Card image cap" width="80px" height="80px">
+                </a>
+            </div>
+            <div class="introduce">
+                <button onclick="openclose()" id="btn-introducing-box" class="introduce_btn btn" href="#" role="button">사이트 소개</button>
+            </div>
+            <div class="login">
+                <button href="#" class="login_btn btn" role="button" aria-pressed="true">로그인</button>
+            </div>            
+        </div>
+
+        <div class="introducing-box" id="intro-box">
+            <p>
+                <center>
+                <h3>우리 사이트는 우리나라에 있는 전시와 공연 정보를 모아 전달해드립니다.</h3>
+                <h3>관심 있는 전시와 공연은 놓치지 마세요!</h3>
+                </center>
+            </p>     
+        </div>
+        <div class="wrap_pics">
+            <div class="two_images">
+                <a href="C:\Users\heoyj\Desktop\hh99_mkheo\hanghae99-first-project\templates\artShow">
+                    <h1>전시</h1>
+                    <img class="card-img-top"
+                    src="https://post-phinf.pstatic.net/MjAxNzA0MTBfMjU4/MDAxNDkxODEyODc5NTkw.GMNb3XJGGFpCpYYum69KaviHgZr19uOP1P9UOPaUI-og.xLYOdT7ByW2vQ85yH2gAC1MiOM5vw0ZtoFqddWxQht4g.JPEG/%EA%B3%B5%EC%9C%A03.jpg?type=w1200"
+                    alt="Card image cap">
+                </a>
+                
+            </div>
+            <div class="two_images">
+                <a href="C:\Users\heoyj\Desktop\hh99_mkheo\hanghae99-first-project\templates\performance">
+                    <h1>공연</h1>
+                    <img class="card-img-top"
+                    src="https://image.ajunews.com/content/image/2016/11/28/20161128223905832496.jpg"
+                    alt="Card image cap">
+                </a>          
+            </div>
+                <!-- 전시 or 공연 글자가 들어가고 클릭하면 전시 정보 or 공연 정보 링크 되게 -->
+            </div>
+        </div    
+    </div>
+</body>
+
+</html>
