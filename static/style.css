@@ -208,3 +208,17 @@ button{
     font-weight: 500;
     cursor: pointer;
 }
+
+.culture-box {
+    display: flex;
+    align-items: center;
+}
+
+.card-padding {
+    padding: 2px;
+    border: solid 1px grey;
+}
+
+.red-text {
+    color: red;
+}
