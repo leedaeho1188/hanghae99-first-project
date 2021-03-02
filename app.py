@@ -24,6 +24,7 @@ def performance():
 @app.route('/artshow', methods=['GET'])
 def listingArtShow():
    blogs = list(db.Share_artShow.find({}, {'_id': False}))
+   
    return jsonify({'all_blogs': blogs})
 
 @app.route('/performance', methods=['GET'])

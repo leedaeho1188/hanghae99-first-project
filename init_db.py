@@ -21,7 +21,7 @@ def savingArtShow1():
    headers = {
       'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36'}
    data = requests.get('https://www.culture.go.kr/perform/performList.do?cPage=1&genre=6&searchKeywordType=t',
-                       verify=False)
+      verify=False)
 
    soup = BeautifulSoup(data.text, 'html.parser')
 
@@ -29,29 +29,29 @@ def savingArtShow1():
 
    for show in shows:
       title = show.select_one('dl > dt > a > span').text
-      url = show.select_one('a.hoverDot')['href']
-      image = show.select_one('a.hoverDot > div > img')['src']
+      url = "https://www.culture.go.kr" + show.select_one('a.hoverDot')['href']
+      image = "https://www.culture.go.kr" + show.select_one('a.hoverDot > div > img')['src']
       loc = show.select_one('dl > dd:nth-child(3) > span.loc').text
       loc_detail = show.select_one('dl > dd:nth-child(3) > span.loc_detail').text
       date = show.select_one('dl > dd.date').text
 
-   doc = {
-         'title': title,
-         'image': image,
-         'loc': loc,
-         'url': url,
-         'loc_detail': loc_detail,
-         'date': date
-      }
+      doc = {
+            'title': title,
+            'image': image,
+            'loc': loc,
+            'url': url,
+            'loc_detail': loc_detail,
+            'date': date
+         }
 
-   db.Share_artShow.insert_one(doc)
+      db.Share_artShow.insert_one(doc)
    print('완료', title)
 
 def savingArtShow2():
    headers = {
       'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36'}
    data = requests.get('https://www.culture.go.kr/perform/performList.do?cPage=2&genre=6&searchKeywordType=t',
-                       verify=False)
+      verify=False)
 
    soup = BeautifulSoup(data.text, 'html.parser')
 
@@ -59,8 +59,8 @@ def savingArtShow2():
 
    for show in shows:
       title = show.select_one('dl > dt > a > span').text.strip()
-      url = show.select_one('a.hoverDot')['href']
-      image = show.select_one('a.hoverDot > div > img')['src']
+      url = "https://www.culture.go.kr" + show.select_one('a.hoverDot')['href']
+      image = "https://www.culture.go.kr" + show.select_one('a.hoverDot > div > img')['src']
       loc = show.select_one('dl > dd:nth-child(3) > span.loc').text
       loc_detail = show.select_one('dl > dd:nth-child(3) > span.loc_detail').text
       date = show.select_one('dl > dd.date').text
@@ -84,7 +84,7 @@ def savingPerformance1():
    headers = {
       'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36'}
    data = requests.get('https://www.culture.go.kr/perform/performList.do?cPage=1&genre=8&searchKeywordType=t',
-                       verify=False)
+      verify=False)
 
    soup = BeautifulSoup(data.text, 'html.parser')
 
@@ -92,8 +92,8 @@ def savingPerformance1():
 
    for show in shows:
       title = show.select_one('dl > dt > a > span').text.strip()
-      url = show.select_one('a.hoverDot')['href']
-      image = show.select_one('a.hoverDot > div > img')['src']
+      url = "https://www.culture.go.kr" + show.select_one('a.hoverDot')['href']
+      image = "https://www.culture.go.kr" + show.select_one('a.hoverDot > div > img')['src']
       loc = show.select_one('dl > dd:nth-child(3) > span.loc').text
       loc_detail = show.select_one('dl > dd:nth-child(3) > span.loc_detail').text
       date = show.select_one('dl > dd.date').text
@@ -114,7 +114,7 @@ def savingPerformance2():
    headers = {
       'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36'}
    data = requests.get('https://www.culture.go.kr/perform/performList.do?cPage=2&genre=8&searchKeywordType=t',
-                       verify=False)
+      verify=False)
 
    soup = BeautifulSoup(data.text, 'html.parser')
 
@@ -122,8 +122,8 @@ def savingPerformance2():
 
    for show in shows:
       title = show.select_one('dl > dt > a > span').text.strip()
-      url = show.select_one('a.hoverDot')['href']
-      image = show.select_one('a.hoverDot > div > img')['src']
+      url = "https://www.culture.go.kr" + show.select_one('a.hoverDot')['href']
+      image = "https://www.culture.go.kr" + show.select_one('a.hoverDot > div > img')['src']
       loc = show.select_one('dl > dd:nth-child(3) > span.loc').text
       loc_detail = show.select_one('dl > dd:nth-child(3) > span.loc_detail').text
       date = show.select_one('dl > dd.date').text
@@ -144,7 +144,7 @@ def savingPerformance3():
    headers = {
       'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36'}
    data = requests.get('https://www.culture.go.kr/perform/performList.do?cPage=3&genre=8&searchKeywordType=t',
-                       verify=False)
+      verify=False)
 
    soup = BeautifulSoup(data.text, 'html.parser')
 
@@ -152,8 +152,8 @@ def savingPerformance3():
 
    for show in shows:
       title = show.select_one('dl > dt > a > span').text.strip()
-      url = show.select_one('a.hoverDot')['href']
-      image = show.select_one('a.hoverDot > div > img')['src']
+      url = "https://www.culture.go.kr" + show.select_one('a.hoverDot')['href']
+      image = "https://www.culture.go.kr" + show.select_one('a.hoverDot > div > img')['src']
       loc = show.select_one('dl > dd:nth-child(3) > span.loc').text
       loc_detail = show.select_one('dl > dd:nth-child(3) > span.loc_detail').text
       date = show.select_one('dl > dd.date').text
@@ -174,7 +174,7 @@ def savingPerformance4():
    headers = {
       'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36'}
    data = requests.get('https://www.culture.go.kr/perform/performList.do?cPage=4&genre=8&searchKeywordType=t',
-                       verify=False)
+      verify=False)
 
    soup = BeautifulSoup(data.text, 'html.parser')
 
@@ -182,8 +182,8 @@ def savingPerformance4():
 
    for show in shows:
       title = show.select_one('dl > dt > a > span').text.strip()
-      url = show.select_one('a.hoverDot')['href']
-      image = show.select_one('a.hoverDot > div > img')['src']
+      url = "https://www.culture.go.kr" + show.select_one('a.hoverDot')['href']
+      image = "https://www.culture.go.kr" + show.select_one('a.hoverDot > div > img')['src']
       loc = show.select_one('dl > dd:nth-child(3) > span.loc').text
       loc_detail = show.select_one('dl > dd:nth-child(3) > span.loc_detail').text
       date = show.select_one('dl > dd.date').text
@@ -204,7 +204,7 @@ def savingPerformance5():
    headers = {
       'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36'}
    data = requests.get('https://www.culture.go.kr/perform/performList.do?cPage=5&genre=8&searchKeywordType=t',
-                       verify=False)
+      verify=False)
 
    soup = BeautifulSoup(data.text, 'html.parser')
 
@@ -212,8 +212,8 @@ def savingPerformance5():
 
    for show in shows:
       title = show.select_one('dl > dt > a > span').text.strip()
-      url = show.select_one('a.hoverDot')['href']
-      image = show.select_one('a.hoverDot > div > img')['src']
+      url = "https://www.culture.go.kr" + show.select_one('a.hoverDot')['href']
+      image = "https://www.culture.go.kr" + show.select_one('a.hoverDot > div > img')['src']
       loc = show.select_one('dl > dd:nth-child(3) > span.loc').text
       loc_detail = show.select_one('dl > dd:nth-child(3) > span.loc_detail').text
       date = show.select_one('dl > dd.date').text
