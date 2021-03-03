@@ -35,11 +35,11 @@ def performance():
    data = list(db.Share_Performance.find({}, {'_id': False}))
    return render_template('performance.html', blogs = data)
 
-@app.route('/artshow', methods=['GET'])
-def listingArtShow():
-   blogs = list(db.Share_artShow.find({}, {'_id': False}))
+# @app.route('/artshow', methods=['GET'])
+# def listingArtShow():
+#    blogs = list(db.Share_artShow.find({}, {'_id': False}))
    
-   return jsonify({'all_blogs': blogs})
+#    return jsonify({'all_blogs': blogs})
 
 # @app.route('/performance', methods=['GET'])
 # def listingPerformance():
@@ -85,8 +85,33 @@ def sign_in():
     # 찾지 못하면
     else:
         return jsonify({'result': 'fail', 'msg': '아이디/비밀번호가 일치하지 않습니다.'})
+@app.route('/review/artshow', methods=['POST'])
+def submit_artShow_review():
+   token_receive = request.cookies.get('mytoken')
+   payload = jwt.decode(token_receive, SECRET_KEY, algorithms=['HS256'])
+   title_receive = request.form['title_give']
+   review_receive = request.form['review_give']
+   doc = {
+      "username" : payload["id"],
+      "title" : title_receive,
+      "review" : review_receive
+   }
+   db.artshow_review.insert_one(doc)
+   return jsonify({'msg':'저장완료!'})
 
-
-
+@app.route('/review/performance', methods=['POST'])
+def submit_performance_review():
+   token_receive = request.cookies.get('mytoken')
+   payload = jwt.decode(token_receive, SECRET_KEY, algorithms=['HS256'])
+   title_receive = request.form['title_give']
+   review_receive = request.form['review_give']
+   doc = {
+      "username" : payload["id"],
+      "title" : title_receive,
+      "review" : review_receive
+   }
+   db.performance_review.insert_one(doc)
+   return jsonify({'msg':'저장완료!'})
+   
 if __name__ == '__main__':
    app.run('0.0.0.0',port=5000,debug=True)

@@ -27,8 +27,8 @@
             $('#logIn_btn').hide()
             $('#logOut_btn').show()
         } else {
-            $('#logIn_btn').hide()
-            $('#logOut_btn').show()
+            $('#logIn_btn').show()
+            $('#logOut_btn').hide()
         }
     })
 
@@ -51,13 +51,18 @@
             }
         }
         function openclose_reviewSubmit(){
-            let status = $('#reviewSubmit_box').css('display');
-            if (status == 'block') {
-                $('#reviewSubmit_box').hide()
-            } else {
-                $('#reviewSubmit_box').show()
+            console.log($.cookie('mytoken'))
+            if (!!$.cookie('mytoken')){
+                let status = $('#reviewSubmit_box').css('display');
+                if (status == 'block') {
+                    $('#reviewSubmit_box').hide()
+                } else {
+                    $('#reviewSubmit_box').show()
+                }
+            } else{
+                alert('로그인해야 리뷰 쓸 수 있어요😗')
             }
-        }
+        } 
         function openclose_review(){
             let status = $('#review_box').css('display');
             if (status == 'block') {
@@ -69,10 +74,26 @@
         function sign_out() {
             $.removeCookie('mytoken', {path: '/'});
             alert('로그아웃 되었습니다.')
-            window.location.href = "/"
+            window.location.reload();
         }
-
     </script>
+    <script defer>
+        function submit_review(){
+            title = $('#show_title').val()
+            review = $('#show_comment').val()
+    
+            $.ajax({
+              type: 'POST',
+              url: '/review/performance',
+              data: {title_give:title, review_give:review},
+              success: function (response) {
+                alert(response["msg"]);
+                window.location.reload();
+                  
+              }
+            });
+        }
+      </script>
 
 </head>
 

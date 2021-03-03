@@ -29,8 +29,8 @@
                 $('#logIn_btn').hide()
                 $('#logOut_btn').show()
             } else {
-                $('#logOut_btn').hide()
                 $('#logIn_btn').show()
+                $('#logOut_btn').hide()
             }
         })
 
@@ -61,7 +61,7 @@
         function sign_out() {
             $.removeCookie('mytoken', {path: '/'});
             alert('로그아웃 되었습니다.')
-            window.location.href = "/"
+            window.location.reload();
         }
 
         function hover1(element) {
