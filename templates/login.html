@@ -35,8 +35,8 @@
         success: function (response) {
             if (response['result'] == 'success') {
                 $.cookie('mytoken', response['token'], {path: '/'});
-                alert("회원가입을 축하드립니다!")
-                window.location.href = '/'
+                alert("로그인 되었습니다.")
+                window.location.reload()
             } else {
                 alert(response['msg'])
             }

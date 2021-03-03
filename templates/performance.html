@@ -15,12 +15,25 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
         integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
         crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
 
     <!-- 구글폰트 -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
 
     <script type="text/javascript">
+    $(document).ready(function(){
+        if (!!$.cookie('mytoken')) {
+            $('#logIn_btn').hide()
+            $('#logOut_btn').show()
+        } else {
+            $('#logIn_btn').hide()
+            $('#logOut_btn').show()
+        }
+    })
+
+
+
         function openclose_signUp(){
             let status = $('#sign_box').css('display');
             if (status == 'block') {
@@ -54,33 +67,8 @@
             }
         }
 
-    </script>
 
-    <!-- <script>
-        $(document).ready(function () {
-            showInfos();
-            });
-        function showInfos() {
-            $.ajax({
-                type: "GET",
-                url: "/performance",
-                data: {},
-                success: function (response) {
-                    let infos = response['all_blogs']
-                    for (let i = 0; i < infos.length; i++) {
-                        let image = infos[i]['image']
-                        let url = infos[i]['url']
-                        let title = infos[i]['title']
-                        let date = infos[i]['date']
-                        let loc = infos[i]['loc']
-                        let loc_detail = infos[i]['loc_detail']
-                        let temp_html = `{% include 'card.html' %}`
-                        $('#cards-box').append(temp_html)
-                    }
-                }
-            })
-        }
-    </script> -->
+    </script>
 
 </head>
 
@@ -97,8 +85,11 @@
                 <div class="signUp">
                     <button href="#" class="signUp_btn btn" role="button" aria-pressed="true" onclick="openclose_signUp()">회원가입</button>
                 </div>  
-                <div class="login">
+                <div class="login" id="logIn_btn">
                     <button href="#" class="login_btn btn" role="button" aria-pressed="true" onclick="openclose_login()">로그인</button>
+                </div>
+                <div class="logOut" id="logOut_btn">
+                    <button href="#" class="login_btn btn" role="button" aria-pressed="true">로그아웃</button>
                 </div>            
             </div>
         </div>

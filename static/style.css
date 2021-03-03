@@ -90,6 +90,9 @@ button{
     font-size: 20px;
     padding: 4px 8px;
 }
+.logOut{
+    display: none;
+}
 .signUp {
     margin-right: 20px; 
 }

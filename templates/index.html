@@ -24,6 +24,15 @@
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
     <script defer>
+        $(document).ready(function(){
+            if (!!$.cookie('mytoken')) {
+                $('#logIn_btn').hide()
+                $('#logOut_btn').show()
+            } else {
+                $('#logOut_btn').hide()
+                $('#logIn_btn').show()
+            }
+        })
 
         function openclose_introduce() {
             let status = $('#intro-box').css('display');
@@ -84,8 +93,11 @@
                 <div class="signUp">
                     <button href="#" class="signUp_btn btn" role="button" aria-pressed="true" onclick="openclose_signUp()">회원가입</button>
                 </div>  
-                <div class="login">
+                <div class="login" id="logIn_btn">
                     <button href="#" class="login_btn btn" role="button" aria-pressed="true" onclick="openclose_login()">로그인</button>
+                </div>
+                <div class="logOut" id="logOut_btn">
+                    <button href="#" class="login_btn btn" role="button" aria-pressed="true">로그아웃</button>
                 </div>            
             </div>
         </div>

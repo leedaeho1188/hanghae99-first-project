@@ -35,11 +35,11 @@ def performance():
    data = list(db.Share_Performance.find({}, {'_id': False}))
    return render_template('performance.html', blogs = data)
 
-# @app.route('/artshow', methods=['GET'])
-# def listingArtShow():
-#    blogs = list(db.Share_artShow.find({}, {'_id': False}))
+@app.route('/artshow', methods=['GET'])
+def listingArtShow():
+   blogs = list(db.Share_artShow.find({}, {'_id': False}))
    
-#    return jsonify({'all_blogs': blogs})
+   return jsonify({'all_blogs': blogs})
 
 # @app.route('/performance', methods=['GET'])
 # def listingPerformance():
