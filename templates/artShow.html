@@ -63,6 +63,11 @@
                 $('#review_box').show()
             }
         }
+        function sign_out() {
+            $.removeCookie('mytoken', {path: '/'});
+            alert('로그아웃 되었습니다.')
+            window.location.href = "/"
+        }
     </script>
 
 
@@ -85,7 +90,7 @@
                     <button href="#" class="login_btn btn" role="button" aria-pressed="true" onclick="openclose_login()">로그인</button>
                 </div>
                 <div class="logOut" id="logOut_btn">
-                    <button href="#" class="login_btn btn" role="button" aria-pressed="true">로그아웃</button>
+                    <button href="#" class="login_btn btn" role="button" aria-pressed="true" onclick="sign_out()">로그아웃</button>
                 </div>             
             </div>
         </div>
