@@ -21,15 +21,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
 
     <script type="text/javascript">
-
-    function openclose_introduce() {
-            let status = $('#intro-box').css('display');
-            if (status == 'block') {
-                $('#intro-box').hide()
-            } else {
-                $('#intro-box').show()
-            }
-        }
         function openclose_signUp(){
             let status = $('#sign_box').css('display');
             if (status == 'block') {
@@ -44,6 +35,14 @@
                 $('#login_box').hide()
             } else {
                 $('#login_box').show()
+            }
+        }
+        function openclose_review(){
+            let status = $('#review_box').css('display');
+            if (status == 'block') {
+                $('#review_box').hide()
+            } else {
+                $('#review_box').show()
             }
         }
 
@@ -67,29 +66,9 @@
                         let date = infos[i]['date']
                         let loc = infos[i]['loc']
                         let loc_detail = infos[i]['loc_detail']
-                        let temp_html = `<div class="card" class="card-padding">
-                                            <div class="card-img">
-                                                <a href="${url}">
-                                                    <img class="card-img-Top"
-                                                        src="${image}"
-                                                        alt="image">
-                                                </a>
-                                            </div>
-                                            <div class="card-body">
-                                                <a target="_blank" href="${url}" class="card-title">${title}</a>
-                                                <hr style="border: solid 1px grey;"">
-                                                <div class="card-text">${date}</div>
-                                                <hr style="border: solid 1px grey;">
-                                            </div>
-                                            <div class="card-footer">
-                                                <div class="card-text" class="red-text">${loc}</div>
-                                                <div class="card-text">${loc_detail}</div>
-                                            </div>
-                                        </div>`
+                        let temp_html = `{% include 'card.html' %}`
                         $('#cards-box').append(temp_html)
                     }
-                    //console.log(articles)
-                    //alert(response["msg"]);
                 }
             })
         }
@@ -99,106 +78,34 @@
 
 <body>
     <div class="wrap">
-        <div class="title_line">
-            <div class="culture-box">
+        <div class = "title_line">
+            <div class="nav_left">
                 <a href="{{ url_for('Home')}}">
-                    <img class="card-img-top" src="{{url_for('static', filename='share_culture.jpg')}}" alt="Card image cap" width="80px" height="80px">
+                    <img class="card-img-top"
+                    src="{{url_for('static', filename='share_culture.jpg')}}" alt="Card image cap" width="80px" height="80px">
                 </a>
-                <div class="introduce">
-                    <button onclick="openclose()" id="btn-introducing-box" class="introduce_btn btn" href="#"
-                        role="button">사이트 소개</button>
-                </div>
             </div>
-            <div class="login">
-                <button href="#" class="login_btn btn" role="button" aria-pressed="true">로그인</button>
+            <div class="nav_right">
+                <div class="signUp">
+                    <button href="#" class="signUp_btn btn" role="button" aria-pressed="true" onclick="openclose_signUp()">회원가입</button>
+                </div>  
+                <div class="login">
+                    <button href="#" class="login_btn btn" role="button" aria-pressed="true" onclick="openclose_login()">로그인</button>
+                </div>            
             </div>
         </div>
-
+        <div class="middle-line">
+            <div class="middle-line-left">공연</div>
+            <div class="middle-line-right">
+                <button>리뷰</button>
+                <button onclick="openclose_review()">리뷰 작성</button>
+            </div>
+        </div>
         <div class="card-columns" id="cards-box">
 
         </div>
-        <div id="login_box" class="main_container_login">
-            <div class="login_container">
-                <div class="form_container">
-                    <form name="login_form" action="/cookie" method="get">
-                        <div class="form_title_div">
-                            <p class="form_title_p">로그인</p>
-                        </div>
-                        <div>
-                            <div>
-                                <label class="form_item_name" for="Email">이메일</label>
-                                <input type="text" name="email" placeholder="E-mail" class="form_input"/>
-                            </div>
-                            <div class="form_text_alert_padding">
-                                <div id="alert_email" class="form_text_alert"></div>
-                            </div>
-                        </div>
-                        <div>
-                            <div>
-                                <label class="form_item_name" for="psw">비밀번호</label>
-                                <input  type="password" name="password" placeholder="Enter password" class="form_input" />
-                            </div>
-                            <div class="form_text_alert_padding">
-                                <div id="alert_password" class="form_text_alert"></div>
-                            </div>
-                        </div>
-                        <div style="height: 10px;"></div>
-                        <div>
-                            <button type="button" class="form_Login_button" onclick="login()">로그인</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-        <div id="sign_box" class="main_container_signUp">
-            <div class="signUp_container">
-                <div class="form_container">
-                    <form name="login_form" action="/cookie" method="get">
-                        <div class="form_title_div">
-                            <p class="form_title_p">회원가입</p>
-                        </div>
-                        <div>
-                            <div>
-                                <label class="form_item_name" for="userName">이름</label>
-                                <input type="text" id="userName" name="username" placeholder="name" class="form_input"/>
-                            </div>
-                            <div class="form_text_alert_padding">
-                                <div id="alert_username" class="form_text_alert"></div>
-                            </div>
-                        </div>
-                        <div>
-                            <div>
-                                <label class="form_item_name" for="Email">이메일</label>
-                                <input type="text" id="Email" name="email" placeholder="E-mail" class="form_input"/>
-                            </div>
-                            <div class="form_text_alert_padding">
-                                <div id="alert_email" class="form_text_alert"></div>
-                            </div>
-                        </div>
-                        <div>
-                            <div>
-                                <label class="form_item_name" for="psw">비밀번호</label>
-                                <input id="psw" type="password" name="password" placeholder="Enter password" class="form_input" />
-                            </div>
-                            <div class="form_text_alert_padding">
-                                <div id="alert_password" class="form_text_alert"></div>
-                            </div>
-                        </div>
-                        <div>
-                            <div>
-                                <label class="form_item_name" for="confirm_psw">비밀번호 확인</label>
-                                <input  id="confirm_psw" type="password" name="password2" onfocus="" placeholder="Enter password again" class="form_input" />
-                            </div>      
-                            <div class="form_text_alert_padding">
-                                <div id="alert_password2" class="form_text_alert"></div>
-                            </div>
-                        </div>
-                        <div style="height: 10px;"></div>
-                        <div>
-                            <button type="button" class="form_submit_button" onclick="login()">회원가입</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
+    </div>
+    {% include 'login.html' %}
+    {% include 'sign_up.html' %}
+    {% include 'review.html' %}
 </body>

@@ -60,6 +60,7 @@ body {
     height: auto;
     width: 100%;
     box-shadow: 0 3px 6px rgba(0,0,0,0.12), 0 2px 5px rgba(0,0,0,0.24);
+    transition: transform 0.5s ease-in-out;
 }
 
 .card-img-bottom:hover{
@@ -130,6 +131,71 @@ button{
     z-index: 2;
     background-color: white;
 }
+.review_container{
+    position: absolute;
+    display: none;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border: 0px solid;
+    z-index: 1;
+    background-color: white;
+    width: 380px;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+.review_container_box{
+    width: 90%; 
+    height: auto;
+    padding: 20px; 
+    margin: auto; 
+    border-radius: 3px; 
+    
+}
+.review_header{
+    text-align: center;
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+.review_title{
+    margin-bottom: 20px;
+}
+.review_title label{
+    display: block;
+    margin-bottom: 8px;
+}
+.review_title input {
+    display: block;
+    width: 90%;
+    margin: auto;
+    border: 1px black solid;
+    border-radius: 4px;
+    font-size: 15px;
+    padding: 4px;
+}
+.review_comment{
+    margin-bottom: 20px;
+}
+.review_comment label{
+    display: block;
+    margin-bottom: 8px;
+}
+.review_comment textarea{
+    display: block;
+    width: 90%;
+    margin: auto;
+    border: 1px black solid;
+    border-radius: 4px;
+    font-size: 15px;
+    padding: 4px;
+}
+.submit_btn{
+    text-align: center;
+}
+.submit-btn{
+    border: none;
+    background-color: ;
+}
+
 
 .signUp_container{
     width: 380px; 
@@ -137,6 +203,7 @@ button{
     margin: auto; 
     border-radius: 3px; 
     box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    transition: transform 0.5s ease-in-out;
 }
 .login_container{
     width: 380px; 
@@ -233,7 +300,7 @@ button{
 .card{
     border-radius: 4px;
     display: grid;
-    grid-template-rows: max-content max-content max-content;
+    grid-template-rows: 400px max-content max-content;
     box-shadow: 0 3px 6px rgba(0,0,0,0.12), 0 2px 5px rgba(0,0,0,0.24);
     transition: box-shadow 0.25s ease-in 0s, transform 0.25s ease-in 0s;
 }
@@ -260,13 +327,37 @@ button{
     font-size: 18px;
     font-weight: bold;
 }
-.card-text{
-
-}
 .card-footer{
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 0 20px 20px 20px;
 }
-
+.loc-detail{
+    font-size: 14px;
+    -webkit-line-clamp: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.middle-line{
+    margin: auto;
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 100px;
+    margin-bottom: 50px;
+}
+.middle-line-left{
+    font-size: 30px;
+}
+.middle-line-right button{
+    border: none;
+    margin-left: 10px;
+    font-size: 20px;
+}
+.middle-line-right button:hover{
+    font-weight: bold;
+    text-decoration: underline;
+}
