@@ -37,6 +37,14 @@
                 $('#login_box').show()
             }
         }
+        function openclose_reviewSubmit(){
+            let status = $('#reviewSubmit_box').css('display');
+            if (status == 'block') {
+                $('#reviewSubmit_box').hide()
+            } else {
+                $('#reviewSubmit_box').show()
+            }
+        }
         function openclose_review(){
             let status = $('#review_box').css('display');
             if (status == 'block') {
@@ -97,8 +105,8 @@
         <div class="middle-line">
             <div class="middle-line-left">공연</div>
             <div class="middle-line-right">
-                <button>리뷰</button>
-                <button onclick="openclose_review()">리뷰 작성</button>
+                <button onclick="openclose_review()">리뷰</button>
+                <button onclick="openclose_reviewSubmit()">리뷰 작성</button>
             </div>
         </div>
         <div class="card-columns" id="cards-box">
@@ -107,5 +115,7 @@
     </div>
     {% include 'login.html' %}
     {% include 'sign_up.html' %}
+    {% include 'review_submit.html' %}
     {% include 'review.html' %}
 </body>
+</html>

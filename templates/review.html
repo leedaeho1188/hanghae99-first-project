@@ -7,21 +7,24 @@
   <title>Document</title>
 </head>
 <body>
-    <div class="review_container" id="review_box">
-      <div class="review_container_box">
-        <div class="review_header">리뷰 작성</div>
-        <div class="review_title">
-          <label for="show_title">작품 이름</label>
-          <input id="show_title" type="text" placeholder="작품 이름을 적어주세요">
-        </div>
-        <div class="review_comment">
-          <label for="show_comment">작품 리뷰</label>
-          <textarea  id="show_comment" rows="3"></textarea>
-        </div>
-        <div class="submit_btn">
-          <button>리뷰저장</button>
-        </div>
-      </div>
-    </div>
+  <div class="review-list" id="review_box">
+    <div class="review-head">리뷰</div>
+    <table class="review-table">
+      <thead>
+        <tr>
+          <th>이름</th>
+          <th>작품</th>
+          <th>리뷰</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>이대호</td>
+          <td>레미제라블</td>
+          <td>재미있었습니다.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </body>
 </html>

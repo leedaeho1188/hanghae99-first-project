@@ -5,9 +5,44 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  <link rel="stylesheet" href="./style_login.css" type="text/css" media="all" />
-  <script src="./login.js" type="text/javascript"></script>
-  
+  <script>
+      function sign_in() {
+    let username = $("#input-username").val()
+    let password = $("#input-password").val()
+
+    if (username == "") {
+        $("#help-id-login").text("아이디를 입력해주세요.")
+        $("#input-username").focus()
+        return;
+    } else {
+        $("#help-id-login").text("")
+    }
+
+    if (password == "") {
+        $("#help-password-login").text("비밀번호를 입력해주세요.")
+        $("#input-password").focus()
+        return;
+    } else {
+        $("#help-password-login").text("")
+    }
+    $.ajax({
+        type: "POST",
+        url: "/sign_in",
+        data: {
+            username_give: username,
+            password_give: password
+        },
+        success: function (response) {
+            if (response['result'] == 'success') {
+                $.cookie('mytoken', response['token'], {path: '/'});
+                window.location.replace("/")
+            } else {
+                alert(response['msg'])
+            }
+        }
+    });
+}
+  </script>
 
 </head>
 <body>
@@ -20,25 +55,25 @@
                 </div>
                 <div>
                     <div>
-                        <label class="form_item_name" for="Email">이메일</label>
-                        <input type="text" name="email" placeholder="E-mail" class="form_input"/>
+                        <label class="form_item_name" for="input-username">아이디</label>
+                        <input id="input-username" type="text" name="ID" placeholder="Enter ID" class="form_input"/>
                     </div>
                     <div class="form_text_alert_padding">
-                        <div id="alert_email" class="form_text_alert"></div>
+                        <div id="help-id-login" class="form_text_alert"></div>
                     </div>
                 </div>
                 <div>
                     <div>
-                        <label class="form_item_name" for="psw">비밀번호</label>
-                        <input  type="password" name="password" placeholder="Enter password" class="form_input" />
+                        <label class="form_item_name" for="input-password">비밀번호</label>
+                        <input id="input-password"  type="password" name="password" placeholder="Enter password" class="form_input" />
                     </div>
                     <div class="form_text_alert_padding">
-                        <div id="alert_password" class="form_text_alert"></div>
+                        <div id="help-password-login" class="form_text_alert"></div>
                     </div>
                 </div>
                 <div style="height: 10px;"></div>
                 <div>
-                    <button type="button" class="form_Login_button" onclick="login()">로그인</button>
+                    <button type="button" class="form_Login_button" onclick="sign_in()">로그인</button>
                 </div>
             </form>
         </div>

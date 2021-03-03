@@ -123,7 +123,7 @@ function checkValidPassword2(form) {
         document.getElementById('alert_password2').innerText = "Password and password2 is not match.";
         form.password.style.border = '2px solid';
         form.password.style.borderColor = '#FF0000';
-        document.getElementById('alert_password').style.color = '#FF0000';
+        document.getElementById('alert_password2').style.color = '#FF0000';
         return false;
     }
 

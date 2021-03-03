@@ -157,11 +157,11 @@ button{
     margin-bottom: 20px;
 }
 .review_title{
-    margin-bottom: 20px;
+    margin-bottom: 30px;
 }
 .review_title label{
     display: block;
-    margin-bottom: 8px;
+    margin-bottom: 12px;
 }
 .review_title input {
     display: block;
@@ -173,11 +173,11 @@ button{
     padding: 4px;
 }
 .review_comment{
-    margin-bottom: 20px;
+    margin-bottom: 30px;
 }
 .review_comment label{
     display: block;
-    margin-bottom: 8px;
+    margin-bottom: 12px;
 }
 .review_comment textarea{
     display: block;
@@ -191,11 +191,40 @@ button{
 .submit_btn{
     text-align: center;
 }
-.submit-btn{
+.submit_btn button{
+    font-size: 15px;
+    padding: 6px 12px;
+    color: white;
     border: none;
-    background-color: ;
+    background-color: #34A853;
+}
+.submit_btn button:hover{
+    font-weight: bold;
+}
+.review-list{
+    position: absolute;
+    display: none;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border: 0px solid;
+    z-index: 1;
+    background-color: white;
+    width: 70%;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+.review-head{
+    text-align: center;
+}
+.review-table{
+    width: 100%;
+    margin: auto;
 }
 
+
+table, th, td {
+    border: 1px solid black;
+  }
 
 .signUp_container{
     width: 380px; 
