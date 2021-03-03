@@ -25,24 +25,26 @@ from datetime import datetime, timedelta
 def Home():
    return render_template('index.html')
 
-@app.route('/artShow')
+@app.route('/artShow', methods=['GET'])
 def artShow():
-   return render_template('artShow.html')
+   data = list(db.Share_artShow.find({}, {'_id': False}))
+   return render_template('artShow.html', blogs = data)
 
-@app.route('/Performance')
+@app.route('/Performance', methods=['GET'])
 def performance():
-   return render_template('performance.html')
+   data = list(db.Share_Performance.find({}, {'_id': False}))
+   return render_template('performance.html', blogs = data)
 
-@app.route('/artshow', methods=['GET'])
-def listingArtShow():
-   blogs = list(db.Share_artShow.find({}, {'_id': False}))
+# @app.route('/artshow', methods=['GET'])
+# def listingArtShow():
+#    blogs = list(db.Share_artShow.find({}, {'_id': False}))
    
-   return jsonify({'all_blogs': blogs})
+#    return jsonify({'all_blogs': blogs})
 
-@app.route('/performance', methods=['GET'])
-def listingPerformance():
-   blogs = list(db.Share_Performance.find({}, {'_id': False}))
-   return jsonify({'all_blogs': blogs})
+# @app.route('/performance', methods=['GET'])
+# def listingPerformance():
+#    blogs = list(db.Share_Performance.find({}, {'_id': False}))
+#    return jsonify({'all_blogs': blogs})
 
 @app.route('/sign_up/save', methods=['POST'])
 def sign_up():

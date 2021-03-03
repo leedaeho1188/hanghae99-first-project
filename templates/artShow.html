@@ -56,31 +56,31 @@
     </script>
 
    
-    <script>
-        $(document).ready(function () {
-            showInfos();
-            });
-        function showInfos() {
-            $.ajax({
-                type: "GET",
-                url: "/artshow",
-                data: {},
-                success: function (response) {
-                    let infos = response['all_blogs']
-                    for (let i = 0; i < infos.length; i++) {
-                        let image = infos[i]['image']
-                        let url = infos[i]['url']
-                        let title = infos[i]['title']
-                        let date = infos[i]['date']
-                        let loc = infos[i]['loc']
-                        let loc_detail = infos[i]['loc_detail']
-                        let temp_html = `{% include 'card.html' %}`
-                        $('#cards-box').append(temp_html)
-                    }
-                }
-            })
-        }
-    </script>
+    <!-- <script>
+        // $(document).ready(function () {
+        //     showInfos();
+        //     });
+        // function showInfos() {
+        //     $.ajax({
+        //         type: "GET",
+        //         url: "/artshow",
+        //         data: {},
+        //         success: function (response) {
+        //             let infos = response['all_blogs']
+        //             for (let i = 0; i < infos.length; i++) {
+        //                 let image = infos[i]['image']
+        //                 let url = infos[i]['url']
+        //                 let title = infos[i]['title']
+        //                 let date = infos[i]['date']
+        //                 let loc = infos[i]['loc']
+        //                 let loc_detail = infos[i]['loc_detail']
+        //                 let temp_html = `{% include 'card.html' %}`
+        //                 $('#cards-box').append(temp_html)
+        //             }
+        //         }
+        //     })
+        // }
+    </script> -->
 
 </head>
 
@@ -110,9 +110,10 @@
             </div>
         </div>
         <div class="card-columns" id="cards-box">
-            
+            {% include 'card.html' %}
         </div>
     </div>
+    
     {% include 'login.html' %}
     {% include 'sign_up.html' %}
     {% include 'review_submit.html' %}       

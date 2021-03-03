@@ -7,24 +7,26 @@
   <title>Document</title>
 </head>
 <body>
-  <div class="card" class="card-padding">
-    <div class="card-img">
-        <a href="${url}">
-            <img class="card-img-Top"
-                src="${image}"
-                alt="image">
-        </a>
+  {% for blog in blogs %}
+    <div class="card" class="card-padding">
+      <div class="card-img">
+          <a href="{{ blog['url'] }}">
+              <img class="card-img-Top"
+                  src="{{ blog['image'] }}"
+                  alt="image">
+          </a>
+      </div>
+      <div class="card-body">
+          <a target="_blank" href="{{ blog['url'] }}" class="card-title">{{ blog['title'] }}</a>
+          <hr style="border: solid 1px grey;">
+          <div class="card-text">{{ blog['date'] }}</div>
+          <hr style="border: solid 1px grey;">
+      </div>
+      <div class="card-footer">
+          <div class="loc">{{ blog['loc'] }}</div>
+          <div class="loc-detail">{{ blog['loc_detail'] }}</div>
+      </div>
     </div>
-    <div class="card-body">
-        <a target="_blank" href="${url}" class="card-title">${title}</a>
-        <hr style="border: solid 1px grey;"">
-        <div class="card-text">${date}</div>
-        <hr style="border: solid 1px grey;">
-    </div>
-    <div class="card-footer">
-        <div class="loc">${loc}</div>
-        <div class="loc-detail">${loc_detail}</div>
-    </div>
-  </div>
+  {% endfor %}  
 </body>
 </html>
