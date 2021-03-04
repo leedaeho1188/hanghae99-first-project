@@ -263,15 +263,16 @@ button{
     width: 100%;
     margin: auto;
     border-collapse: collapse;
+    table-layout: fixed;
 }
 thead th:nth-child(1){
     width: 20%
 }
 thead th:nth-child(2){
-    width: 30%;
+    width: 25%;
 }
 thead th:nth-child(3){
-    width: 50%;
+    width: 55%;
 }
 td, th {
     padding: 4px 8px;
@@ -516,4 +517,4 @@ table, th, td {
 .reviewSubmit_btn{
     padding-left: 10px;
 }
-
+@media screen and ()
