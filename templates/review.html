@@ -7,24 +7,26 @@
   <title>Document</title>
 </head>
 <body>
-  <div class="review-list" id="review_box">
-    <div class="review-head">리뷰</div>
-    <table class="review-table">
-      <thead>
-        <tr>
-          <th>이름</th>
-          <th>작품</th>
-          <th>리뷰</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>이대호</td>
-          <td>레미제라블</td>
-          <td>재미있었습니다.</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+  {% for review in reviews %}
+    <div class="review-list" id="review_box">
+      <div class="review-head">리뷰</div>
+      <table class="review-table">
+        <thead>
+          <tr>
+            <th>이름</th>
+            <th>작품</th>
+            <th>리뷰</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{{ review['username'] }}</td>
+            <td>{{ review['title'] }}</td>
+            <td>{{ review['review'] }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  {% endfor %}
 </body>
 </html>
