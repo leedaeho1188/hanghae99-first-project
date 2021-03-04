@@ -28,7 +28,7 @@
 
     <script type="text/javascript">
     $(document).ready(function(){
-
+        get_review()
         if (!!$.cookie('mytoken')) {
             $('#logIn_btn').hide()
             $('#logOut_btn').show()
@@ -74,7 +74,6 @@
             if (status == 'block') {
                 $('#review_box').hide()
             } else {
-                get_review()
                 $('#review_box').show()
             }
         }
@@ -88,27 +87,28 @@
         function submit_review(){
             title = $('#show_title').val()
             review = $('#show_comment').val()
-    
-            if (title == ""){
-                alert("작품 이름을 적어주세요!😜")
-                return;
-            } else if (review == ""){
-                alert("작품 감상평을 적어주세요!🤨")
-                return;
-            } else{
-                $.ajax({
-                    type: 'POST',
-                    url: '/review/performance',
-                    data: {title_give:title, review_give:review},
-                    success: function (response) {
-                    alert(response["msg"]);
-                    window.location.reload();
-                    }
-                });
-            }
+            
+        if (title == ""){
+            alert("작품 이름을 적어주세요!😜")
+            return;
+        } else if (review == ""){
+            alert("작품 감상평을 적어주세요!🤨")
+            return;
+        } else{
+            $.ajax({
+                type: 'POST',
+                url: '/review/performance',
+                data: {title_give:title, review_give:review},
+                success: function (response) {
+                alert(response["msg"]);
+                window.location.reload();
+                }
+            });
         }
-      </script>
-      <script>
+        
+    }
+    </script>
+    <script>
         function get_review(){
             $.ajax({
                 type: 'GET',
@@ -162,8 +162,8 @@
         <div class="middle-line">
             <div class="middle-line-left">공연</div>
             <div class="middle-line-right">
-                <button onclick="openclose_review()">리뷰</button>
-                <button id="submitReview" onclick="openclose_reviewSubmit()">리뷰 작성</button>
+                <button class="review_btn" onclick="openclose_review()">리뷰</button>
+                <button class="reviewSubmit_btn" id="submitReview" onclick="openclose_reviewSubmit()">리뷰 작성</button>
             </div>
         </div>
         <div class="card-columns" id="cards-box">
