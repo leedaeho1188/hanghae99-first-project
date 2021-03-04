@@ -1,6 +1,9 @@
 body {
     font-family: 'Noto Sans KR', sans-serif;
     padding-bottom: 40px;
+    background-color: #f3f4f8
+
+    ;
 }
 
 .wrap {
@@ -89,6 +92,7 @@ button{
 .login_btn {
     font-size: 20px;
     padding: 4px 8px;
+    border: none;
 }
 .logOut{
     display: none;
@@ -226,12 +230,16 @@ button{
 
 .close_button{
     position: absolute;
-    right: 15px;
+    right: 12px;
     top: 10px;
 }
 .close_button button{
-    border: 0.5px black solid;
+    padding: 0px 8px;
+    padding-bottom: 2px;
+    font-size: 20px;
+    border: 0.2px rgb(68, 67, 67) solid;
     border-radius: 20px;
+    color: rgb(68, 67, 67);
 }
 
 .close_button button:hover{
@@ -284,10 +292,22 @@ table, th, td {
 }
 .id_input input{
     width: 70%;
+    padding: 4px 8px;
     height: 30px; 
     border: 1px solid; 
     border-radius: 3px; 
     border-color: gray;
+}
+.id_input button{
+    font-weight: bold;
+    border-color: gray;
+}
+
+
+.id_input button:hover{
+    border-color: #34A853;
+    background: #34A853;
+    color: white;
 }
 
 
@@ -356,7 +376,7 @@ table, th, td {
     margin-top: 50px;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    grid-gap: 30px;
+    grid-gap: 30px;;
 }
 .card{
     border-radius: 4px;
@@ -364,6 +384,7 @@ table, th, td {
     grid-template-rows: 400px max-content max-content;
     box-shadow: 0 3px 6px rgba(0,0,0,0.12), 0 2px 5px rgba(0,0,0,0.24);
     transition: box-shadow 0.25s ease-in 0s, transform 0.25s ease-in 0s;
+    background-color: white;
 }
 .card:hover {
     box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
@@ -400,6 +421,7 @@ table, th, td {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    color: rgb(102, 101, 101);
 }
 .middle-line{
     margin: auto;
@@ -411,7 +433,7 @@ table, th, td {
     margin-bottom: 50px;
 }
 .middle-line-left{
-    font-size: 30px;
+    font-size: 40px;
 }
 .middle-line-right button{
     border: none;
