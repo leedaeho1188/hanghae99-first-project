@@ -38,7 +38,6 @@ def performance():
 # @app.route('/artshow', methods=['GET'])
 # def listingArtShow():
 #    blogs = list(db.Share_artShow.find({}, {'_id': False}))
-   
 #    return jsonify({'all_blogs': blogs})
 
 # @app.route('/performance', methods=['GET'])
@@ -113,6 +112,19 @@ def submit_performance_review():
    }
    db.performance_review.insert_one(doc)
    return jsonify({'msg':'저장완료!'})
+
+
+@app.route('/review/artshow/reviews', methods=['GET'])
+def show_artShow_review():
+   data_review = list(db.artshow_review.find({}, {'_id': False}))
+   return render_template('artShow.html', reviews=data_review)
+   
+
+@app.route('/review/performance/reviews', methods=['GET'])
+def show_performance_review():
+   data_review = list(db.performance_review.find({}, {'_id': False}))
+   return render_template('performance.html', reviews=data_review)
+       
    
 if __name__ == '__main__':
-   app.run('0.0.0.0',port=5000,debug=True)
+       app.run('0.0.0.0',port=5000,debug=True)
