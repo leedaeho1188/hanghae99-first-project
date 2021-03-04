@@ -78,12 +78,16 @@ button{
     outline: none;
 }
 .introduce{
-    margin-left: 30px;
+    margin: auto;
+    width: 85%;
+    justify-self: left;
+    text-align: center;
+    margin-bottom: 30px;
 }
 .introduce_btn {
-    font-size: 20px;
+    font-size: 30px;
     border: none;
-    
+
 }
 .nav_right{
     display: flex;
@@ -91,18 +95,26 @@ button{
 }
 .login_btn {
     font-size: 20px;
-    padding: 4px 8px;
     border: none;
 }
 .logOut{
     display: none;
+    padding-left: 10px;
+}
+.login{
+    padding-left: 10px;
 }
 .signUp {
-    margin-right: 20px; 
+    padding-right: 10px; 
+    border-right: 1px double black;
 }
 .signUp_btn{
+    
     border: none;
+    border-radius: 0;
+    
     font-size: 20px;
+    
 }
 .signUp_btn:hover {
     font-weight: bold;
@@ -113,8 +125,13 @@ button{
 .login_btn:hover{
     font-weight: bold;
 }
+.introducing-box{
+    margin: auto;
+    width: 400px;
+}
 .introducing-box-content {
     text-align: center;
+    font-size: 18px;
 }
 
 .main_container_login{
@@ -237,7 +254,7 @@ button{
     padding: 0px 8px;
     padding-bottom: 2px;
     font-size: 20px;
-    border: 0.2px rgb(68, 67, 67) solid;
+    border: 0.2px rgb(126, 125, 125) solid;
     border-radius: 20px;
     color: rgb(68, 67, 67);
 }
@@ -437,10 +454,18 @@ table, th, td {
 }
 .middle-line-right button{
     border: none;
-    margin-left: 10px;
+    border-radius: 0;
     font-size: 20px;
 }
 .middle-line-right button:hover{
     font-weight: bold;
     text-decoration: underline;
 }
+.review_btn{
+    padding-right: 10px;
+    border-right: 1px black solid;
+}
+.reviewSubmit_btn{
+    padding-left: 10px;
+}
+

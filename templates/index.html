@@ -101,9 +101,6 @@
                     <img class="card-img-top"
                     src="{{url_for('static', filename='share_culture.jpg')}}" alt="Card image cap" width="100px" height="100px">
                 </a>
-                <div class="introduce">
-                    <button onclick="openclose_introduce()" id="btn-introducing-box" class="introduce_btn btn" href="#" role="button">사이트 소개</button>
-                </div>
             </div>
             <div class="nav_right">
                 <div class="signUp">
@@ -117,11 +114,14 @@
                 </div>            
             </div>
         </div>
-
+        <div class="introduce">
+            <button onclick="openclose_introduce()" id="btn-introducing-box" class="introduce_btn btn" href="#" role="button">🐱‍🏍 사이트 소개</button>
+        </div>
         <div class="introducing-box" id="intro-box" style="display: none;">
             <p class="introducing-box-content">
-                우리 사이트는 우리나라에 있는 전시와 공연 정보를 모아 전달해드립니다.<br>
-                관심 있는 전시와 공연은 놓치지 마세요!
+                <b>공유</b>가 소개하는 문화 체험 정보<br>
+                관심 있는 <b>전시</b>와 <b>공연</b>을 놓치지 마세요!<br>
+                로그인하고 <b>리뷰</b>를 작성하면 좋은 선물이 있습니다❤<br><br>
             </p>     
         </div>
         <div class="wrap_pics">
