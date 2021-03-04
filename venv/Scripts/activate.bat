@@ -8,7 +8,7 @@ if defined _OLD_CODEPAGE (
     "%SystemRoot%\System32\chcp.com" 65001 > nul
 )
 
-set VIRTUAL_ENV=C:\Users\leeda\OneDrive\Documents\SETUP\ShareLog\venv
+set VIRTUAL_ENV=C:\Users\leeda\OneDrive\Desktop\hh99\hanghae99-first-project\venv
 
 if not defined PROMPT set PROMPT=$P$G
 

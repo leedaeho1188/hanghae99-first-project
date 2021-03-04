@@ -51,9 +51,9 @@ def sign_up():
    password_receive = request.form['password_give']
    password_hash = hashlib.sha256(password_receive.encode('utf-8')).hexdigest()
    doc = {
-      "username": username_receive,                               # 아이디
-      "password": password_hash,                                  # 비밀번호
-      "profile_name": username_receive,                           # 프로필 이름 기본값은 아이디
+      "username": username_receive,                              
+      "password": password_hash,                                  
+      "profile_name": username_receive,                           
    }
    db.user_info.insert_one(doc)
    return jsonify({'result': 'success'})
@@ -66,7 +66,7 @@ def check_dup():
 
 @app.route('/sign_in', methods=['POST'])
 def sign_in():
-   # 로그인
+
    username_receive = request.form['username_give']
    password_receive = request.form['password_give']
 
@@ -76,12 +76,12 @@ def sign_in():
    if result is not None:
       payload = {
       'id': username_receive,
-      'exp': datetime.utcnow() + timedelta(seconds=60 * 60 * 24)  # 로그인 24시간 유지
+      'exp': datetime.utcnow() + timedelta(seconds=60 * 60 * 24) 
       }
       token = jwt.encode(payload, SECRET_KEY, algorithm='HS256')
 
       return jsonify({'result': 'success', 'token': token})
-   # 찾지 못하면
+
    else:
       return jsonify({'result': 'fail', 'msg': '아이디/비밀번호가 일치하지 않습니다.'})
       
@@ -124,7 +124,6 @@ def show_artShow_review():
 def show_performance_review():
    data_review = list(db.performance_review.find({}, {'_id': False}))
    return render_template('performance.html', reviews=data_review)
-       
    
 if __name__ == '__main__':
-       app.run('0.0.0.0',port=5000,debug=True)
+   app.run('0.0.0.0',port=5000,debug=True)

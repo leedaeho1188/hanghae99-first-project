@@ -127,11 +127,18 @@ button{
 }
 .introducing-box{
     margin: auto;
-    width: 400px;
+    width: 480px;
+    margin-top: 40px;
+    border-radius: 5px;
+    border: 3px black solid;
 }
 .introducing-box-content {
     text-align: center;
-    font-size: 18px;
+    font-size: 20px;
+}
+.introducing-box-content span{
+    display: block;
+    margin-bottom: 10px;
 }
 
 .main_container_login{
@@ -451,6 +458,14 @@ table, th, td {
 }
 .middle-line-left{
     font-size: 40px;
+}
+.middle-line-left a{
+    color: rgb(92, 91, 91);
+    text-decoration: none;
+    font-size: 20px;
+}
+.middle-line-left a:hover{
+    font-weight: bold;
 }
 .middle-line-right button{
     border: none;

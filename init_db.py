@@ -5,8 +5,8 @@ import requests
 from bs4 import BeautifulSoup
 
 from pymongo import MongoClient
-# client = MongoClient('mongodb://test:test@localhost', 27017)
-client = MongoClient('localhost', 27017)
+client = MongoClient('mongodb://test:test@localhost', 27017)
+# client = MongoClient('localhost', 27017)
 db = client.dbhh99_1
 
 # @app.route('/artshow', methods=['GET'])
