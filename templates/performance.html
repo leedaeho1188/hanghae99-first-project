@@ -28,6 +28,7 @@
 
     <script type="text/javascript">
     $(document).ready(function(){
+        get_review()
         if (!!$.cookie('mytoken')) {
             $('#logIn_btn').hide()
             $('#logOut_btn').show()
@@ -98,8 +99,31 @@
               }
             });
         }
-      </script>
-
+    </script>
+    <script>
+        function get_review() {
+            $.ajax({
+                type: 'GET',
+                url: '/review/performance/reviews',
+                data: {},
+                success: function (response) {
+                    let reviews = response['reviews']
+                    for (let i = 0; i < reviews.length; i++) {
+                        let username = reviews[i]['username']
+                        let title = reviews[i]['title']
+                        let review = reviews[i]['review']
+                        console.log(username, title, review)
+                        let temp_html = `<tr>
+                                            <td>${username}</td>
+                                            <td>${title}</td>
+                                            <td>${review}</td>
+                                        </tr>`
+                        $("#review_form").append(temp_html)
+                    }
+                }
+            });
+        }
+    </script>
 </head>
 
 <body>
