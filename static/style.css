@@ -224,6 +224,21 @@ button{
     margin: auto;
 }
 
+.close_button{
+    position: absolute;
+    right: 15px;
+    top: 10px;
+}
+.close_button button{
+    border: 0.5px black solid;
+    border-radius: 20px;
+}
+
+.close_button button:hover{
+    border: none;
+    color: white;
+    background-color: #E94235;
+}
 
 table, th, td {
     border: 1px solid black;
@@ -263,10 +278,23 @@ table, th, td {
     display: inline-block; 
     padding-top: 8px;
 }
+.id_input{
+    display: flex;
+    justify-content: space-between;
+}
+.id_input input{
+    width: 70%;
+    height: 30px; 
+    border: 1px solid; 
+    border-radius: 3px; 
+    border-color: gray;
+}
+
 
 .form_input{
-    width: 98%; 
+    width: 94%; 
     height: 30px; 
+    padding: 4px 8px;
     border: 1px solid; 
     border-radius: 3px; 
     border-color: gray;
@@ -277,7 +305,8 @@ table, th, td {
 }
 
 .form_text_alert{
-    height: 20px;
+    height: 30px;
+    font-size: 13px;
 }
 
 .form_text_alert_padding{

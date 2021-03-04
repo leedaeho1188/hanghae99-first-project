@@ -79,18 +79,17 @@
             title = $('#show_title').val()
             review = $('#show_comment').val()
     
-            $.ajax({
-              type: 'POST',
-              url: '/review/artshow',
-              data: {title_give:title, review_give:review},
-              success: function (response) {
-                alert(response["msg"]);
-                window.location.reload();
-                  
-              }
-            });
-        }
-      </script>
+        $.ajax({
+            type: 'POST',
+            url: '/review/artshow',
+            data: {title_give:title, review_give:review},
+            success: function (response) {
+            alert(response["msg"]);
+            window.location.reload();
+            }
+        });
+    }
+    </script>
 
 
 </head>
