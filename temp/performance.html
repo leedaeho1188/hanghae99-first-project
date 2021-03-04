@@ -28,6 +28,7 @@
 
     <script type="text/javascript">
     $(document).ready(function(){
+
         if (!!$.cookie('mytoken')) {
             $('#logIn_btn').hide()
             $('#logOut_btn').show()
@@ -73,6 +74,7 @@
             if (status == 'block') {
                 $('#review_box').hide()
             } else {
+                get_review()
                 $('#review_box').show()
             }
         }
@@ -87,36 +89,51 @@
             title = $('#show_title').val()
             review = $('#show_comment').val()
     
-            $.ajax({
-              type: 'POST',
-              url: '/review/performance',
-              data: {title_give:title, review_give:review},
-              success: function (response) {
-                alert(response["msg"]);
-                window.location.reload();
-                  
-              }
-            });
+            if (title == ""){
+                alert("작품 이름을 적어주세요!😜")
+                return;
+            } else if (review == ""){
+                alert("작품 감상평을 적어주세요!🤨")
+                return;
+            } else{
+                $.ajax({
+                    type: 'POST',
+                    url: '/review/performance',
+                    data: {title_give:title, review_give:review},
+                    success: function (response) {
+                    alert(response["msg"]);
+                    window.location.reload();
+                    }
+                });
+            }
         }
       </script>
       <script>
-        $.ajax({
-            type: 'GET',
-            url: '/review/performance/reviews',
-            data: {},
-            success: function (response) {
-                let reviews = response['reviews']
-                console.log(reviews)
-                for (let i = 0; i < reviews.length; i++) {
-                    let username = reviews[i]['username']
-                    let title = reviews[i]['title']
-                    let review = reviews[i]['review']
-                    console.log(username, title, review)
-                    // let temp_html =                      
-                    // $("#review-box").append(temp_html)
+        function get_review(){
+            $.ajax({
+                type: 'GET',
+                url: '/review/performance/reviews',
+                data: {},
+                success: function (response) {
+                    let reviews = response['reviews']
+                    console.log(reviews)
+                    for (let i = 0; i < reviews.length; i++) {
+                        let username = reviews[i]['username']
+                        let title = reviews[i]['title']
+                        let review = reviews[i]['review']
+                        console.log(username, title, review)
+                        let temp_html = `<tr>
+                                            <td>${username}</td>
+                                            <td>${title}</td>
+                                            <td>${review}</td>
+                                        </tr>`                     
+                        $("#review_form").append(temp_html)
+                    }
                 }
-            }
-        });
+            });
+        }
+
+        
     </script>
 
 </head>
@@ -157,5 +174,6 @@
     {% include 'sign_up.html' %}
     {% include 'review_submit.html' %}
     {% include 'review.html' %}
+    
 </body>
 </html>

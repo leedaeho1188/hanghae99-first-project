@@ -27,6 +27,7 @@
 
     <script type="text/javascript">
         $(document).ready(function(){
+            get_review()
             if (!!$.cookie('mytoken')) {
                 $('#logIn_btn').hide()
                 $('#logOut_btn').show()
@@ -104,6 +105,30 @@
         
     }
     </script>
+    <script>
+        function get_review(){
+            $.ajax({
+                type: 'GET',
+                url: '/review/artshow/reviews',
+                data: {},
+                success: function (response) {
+                    let reviews = response['reviews']
+                    for (let i = 0; i < reviews.length; i++) {
+                        let username = reviews[i]['username']
+                        let title = reviews[i]['title']
+                        let review = reviews[i]['review']
+                        console.log(username, title, review)
+                        let temp_html = `<tr>
+                                        <td>${username}</td>
+                                        <td>${title}</td>
+                                        <td>${review}</td>
+                                    </tr>`                     
+                        $("#review_form").append(temp_html)
+                    }
+                }
+            });
+        }
+    </script>
 
 
 </head>
@@ -140,10 +165,29 @@
             {% include 'card.html' %}
         </div>
     </div>
-    
+    <div class="review-list" id="review_box">
+        <div class="close_button">
+          <button type="button" onclick="close_review()">x</button>
+        </div>
+        <div class="review-head"><h2>리뷰</h2></div>
+        <table class="review-table" >
+            <thead>
+            <tr>
+                <th>이름</th>
+                <th>작품</th>
+                <th>리뷰</th>
+            </tr>
+            </thead>
+            <tbody id="review_form">
+              
+            </tbody>
+        </table> 
+    </div> 
     {% include 'login.html' %}
     {% include 'sign_up.html' %}
-    {% include 'review_submit.html' %}       
-    {% include 'review.html' %} 
+    {% include 'review_submit.html' %}
+    {% include 'review.html' %}
+
+           
 </body>
 </html>
