@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script>
+    function close_review() {
+      $('#review_box').hide()
+    }   
+  </script>
+
+</head>
+<body> 
+  <div class="review-list" id="review_box">
+    <div class="close_button">
+      <button type="button" onclick="close_review()">x</button>
+    </div>
+    <div class="review-head"><h2>리뷰</h2></div>
+    <table class="review-table">
+      <thead>
+        <tr>
+          <th>이름</th>
+          <th>작품</th>
+          <th>리뷰</th>
+        </tr>
+      </thead>
+        <tbody>
+          <tr>
+            <td>${username}</td>
+            <td>${title}</td>
+            <td>${review}</td>
+          </tr>
+        </tbody>
+    </table>
+  </div> 
+</body>
+</html>
