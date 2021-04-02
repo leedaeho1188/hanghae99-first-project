@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <!-- Webpage Title -->
+    <title>공유문화 | 전시 공연 정보 길잡이</title>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- og정보 -->
+    <meta property="og:title" content="공유문화 | 전시 공연 정보 길잡이" />
+    <meta property="og:description" content="공연정보 모음" />
+    <meta property="og:image" content="{{ url_for('static', filename='ogimage_performance.jpg') }} " />
+
+    <!-- JS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+
+    <!-- 구글폰트 -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+
+    <script type="text/javascript">
+    $(document).ready(function(){
+        get_review()
+        if (!!$.cookie('mytoken')) {
+            $('#logIn_btn').hide()
+            $('#logOut_btn').show()
+        } else {
+            $('#logIn_btn').show()
+            $('#logOut_btn').hide()
+        }
+    })
+
+
+
+        function openclose_signUp(){
+            let status = $('#sign_box').css('display');
+            if (status == 'block') {
+                $('#sign_box').hide()
+            } else {
+                $('#sign_box').show()
+            }
+        }
+        function openclose_login(){
+            let status = $('#login_box').css('display');
+            if (status == 'block') {
+                $('#login_box').hide()
+            } else {
+                $('#login_box').show()
+            }
+        }
+        function openclose_reviewSubmit(){
+            if (!!$.cookie('mytoken')){
+                let status = $('#reviewSubmit_box').css('display');
+                if (status == 'block') {
+                    $('#reviewSubmit_box').hide()
+                } else {
+                    $('#reviewSubmit_box').show()
+                }
+            } else{
+                alert('로그인해야 리뷰 쓸 수 있어요😗')
+            }
+        } 
+        function openclose_review(){
+            let status = $('#review_box').css('display');
+            if (status == 'block') {
+                $('#review_box').hide()
+            } else {
+                $('#review_box').show()
+            }
+        }
+        function sign_out() {
+            $.removeCookie('mytoken', {path: '/'});
+            alert('로그아웃 되었습니다.')
+            window.location.reload();
+        }
+    </script>
+    <script defer>
+        function submit_review(){
+            title = $('#show_title').val()
+            review = $('#show_comment').val()
+            
+            if (title == ""){
+                alert("작품 이름을 적어주세요!😜")
+                return;
+            } else if (review == ""){
+                alert("작품 감상평을 적어주세요!🤨")
+                return;
+            } else{
+                $.ajax({
+                    type: 'POST',
+                    url: '/review/performance',
+                    data: {title_give:title, review_give:review},
+                    success: function (response) {
+                    alert(response["msg"]);
+                    window.location.reload();
+                    }
+                });
+            }
+            
+        }
+    </script>
+    <script>
+        function get_review(){
+            $.ajax({
+                type: 'GET',
+                url: '/review/performance/reviews',
+                data: {},
+                success: function (response) {
+                    let reviews = response['reviews']
+                    console.log(reviews)
+                    for (let i = 0; i < reviews.length; i++) {
+                        let username = reviews[i]['username']
+                        let title = reviews[i]['title']
+                        let review = reviews[i]['review']
+                        console.log(username, title, review)
+                        let temp_html = `<tr>
+                                            <td>${username}</td>
+                                            <td>${title}</td>
+                                            <td>${review}</td>
+                                        </tr>`                     
+                        $("#review_form").append(temp_html)
+                    }
+                }
+            });
+        }
+
+        
+    </script>
+
+</head>
+
+<body>
+    <div class="wrap">
+        <div class = "title_line">
+            <div class="nav_left">
+                <a href="{{ url_for('Home')}}">
+                    <img class="card-img-top"
+                    src="{{url_for('static', filename='share_culture.jpg')}}" alt="Card image cap" width="100px" height="100px">
+                </a>
+            </div>
+            <div class="nav_right">
+                <div class="signUp">
+                    <button href="#" class="signUp_btn btn" role="button" aria-pressed="true" onclick="openclose_signUp()">회원가입</button>
+                </div>  
+                <div class="login" id="logIn_btn">
+                    <button href="#" class="login_btn btn" role="button" aria-pressed="true" onclick="openclose_login()">로그인</button>
+                </div>
+                <div class="logOut" id="logOut_btn">
+                    <button href="#" class="login_btn btn" role="button" aria-pressed="true" onclick="sign_out()">로그아웃</button>
+                </div>            
+            </div>
+        </div>
+        <div class="middle-line">
+            <div class="middle-line-left">공연</div>
+            <div class="middle-line-right">
+                <button class="review_btn" onclick="openclose_review()">리뷰</button>
+                <button class="reviewSubmit_btn" id="submitReview" onclick="openclose_reviewSubmit()">리뷰 작성</button>
+            </div>
+        </div>
+        <div class="card-columns" id="cards-box">
+            {% include 'card.html' %}
+        </div>
+    </div>
+    {% include 'login.html' %}
+    {% include 'sign_up.html' %}
+    {% include 'review_submit.html' %}
+    {% include 'review.html' %}
+    
+</body>
+</html>
